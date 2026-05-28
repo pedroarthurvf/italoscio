@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Ítalo Saffe Scio — Implantes e Reabilitação Oral</title>
+  <meta name="description" content="Especialista em implantes dentários e reabilitação oral. Precisão técnica, escuta atenta e sorrisos restaurados." />
+
+  <!-- Tipografia: Plus Jakarta Sans (UI/títulos) + Instrument Sans (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Instrument+Sans:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =====================================================================
+       TOKENS — Refined Geometric Minimalism
+       Inspirados na logo: geométrica, monocromática, precisa.
+       Accent quente usado com parcimônia para humanidade discreta.
+       ===================================================================== */
+    :root {
+      --color-bg: #FFFFFF;
+      --color-surface: #F4F4F2;
+      --color-text: #1C1C1C;
+      --color-text-muted: #888884;
+      --color-accent: #C9A882;
+      --color-accent-dark: #A67C52;
+      --color-border: #1C1C1C;
+
+      --shadow-soft: 0 12px 32px -20px rgba(28, 28, 28, 0.08);
+
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+      --max-width: 1240px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --section-pad: clamp(5rem, 10vw, 7.5rem);
+    }
+
+    /* Reset enxuto */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body, h1, h2, h3, h4, p, ul, ol, li, figure, blockquote { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--color-accent); color: var(--color-bg); }
+
+    /* =====================================================================
+       UTILITÁRIOS DE LAYOUT — grid 12 colunas no desktop
+       ===================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1rem, 2.5vw, 2rem);
+    }
+
+    section {
+      position: relative;
+      padding-block: var(--section-pad);
+    }
+
+    .section--surface { background: var(--color-surface); }
+
+    /* Divisor horizontal editorial */
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: var(--color-border);
+      border: 0;
+      margin: 0;
+    }
+
+    /* =====================================================================
+       TIPOGRAFIA
+       ===================================================================== */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .eyebrow .dot {
+      width: 6px; height: 6px;
+      background: var(--color-accent);
+      display: inline-block;
+    }
+
+    .display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+      line-height: 1.04;
+      letter-spacing: -0.015em;
+      color: var(--color-text);
+    }
+    .display em {
+      font-style: normal;
+      font-weight: 400;
+      color: var(--color-accent-dark);
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.8125rem, 1vw, 0.875rem);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      margin-bottom: 2.5rem;
+    }
+
+    .heading-lg {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      max-width: 22ch;
+    }
+
+    .lead {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+      line-height: 1.55;
+      color: var(--color-text-muted);
+      max-width: 56ch;
+    }
+
+    /* Número gigante editorial */
+    .megafigure {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(6rem, 14vw, 12rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--color-text);
+    }
+    .megafigure em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    /* =====================================================================
+       BOTÕES — pílula é exceção intencional (único radius 999px)
+       ===================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      transition: background 300ms var(--ease), color 300ms var(--ease),
+                  border-color 300ms var(--ease);
+      white-space: nowrap;
+    }
+    .btn--primary {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
+    .btn--primary:hover {
+      background: var(--color-accent);
+      color: var(--color-text);
+      border-color: var(--color-accent);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-text);
+    }
+    .btn--ghost:hover {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
+    .btn .arrow {
+      width: 14px; height: 14px;
+      transition: transform 300ms var(--ease);
+    }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* Link "ghost" com underline crescente */
+    .link-underline {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+    .link-underline::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
+      background: currentColor;
+      transition: width 250ms var(--ease);
+    }
+    .link-underline:hover::after { width: 100%; }
+
+    /* =====================================================================
+       HEADER FIXO
+       ===================================================================== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid rgba(28, 28, 28, 0.08);
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 0.75rem;
+      gap: 1.5rem;
+    }
+
+    /* Brand: logo PNG da marca no header — formato quadrado */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+    }
+    .brand__logo {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+    @media (min-width: 1024px) {
+      .brand__logo { height: 120px; }
+    }
+
+    .nav {
+      display: none;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav a {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+
+    .header .btn { padding: 0.75rem 1.375rem; font-size: 0.6875rem; }
+
+    @media (min-width: 768px) { .nav { display: flex; } }
+
+    /* =====================================================================
+       HERO — sem foto, número gigante como elemento gráfico
+       Título 7/12 à esquerda, credenciais à direita
+       ===================================================================== */
+    .hero {
+      padding-top: clamp(9.5rem, 16vw, 14rem);
+      padding-bottom: clamp(4rem, 8vw, 7rem);
+      position: relative;
+    }
+
+    /* Moldura decorativa parcial (apenas top + left) */
+    .hero__frame {
+      position: absolute;
+      top: clamp(7rem, 12vw, 10rem);
+      left: var(--gutter);
+      width: clamp(80px, 12vw, 140px);
+      height: clamp(80px, 12vw, 140px);
+      border-top: 1px solid var(--color-border);
+      border-left: 1px solid var(--color-border);
+      pointer-events: none;
+    }
+
+    .hero__top {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    /* SVG sorriso — fiel ao "O" da logo: círculo com arco interno inferior */
+    .smile {
+      width: 40px; height: 40px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .hero__credentials {
+      text-align: right;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      line-height: 2;
+    }
+    .hero__credentials strong {
+      display: block;
+      color: var(--color-text);
+      font-weight: 400;
+    }
+
+    /* Hero principal: 2 colunas no desktop (texto à esquerda + foto à direita) */
+    .hero__main {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .hero__main {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: clamp(2.5rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+    }
+
+    .hero__title-wrap { width: 100%; }
+
+    .hero__sub {
+      margin-top: clamp(2rem, 4vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* =====================================================================
+       FOTO DO HERO — moldura geométrica + efeito 3D flutuante
+       ===================================================================== */
+    .hero__photo-wrap {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+    }
+
+    .hero__photo {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      box-shadow:
+        0 4px 6px rgba(28, 28, 28, 0.04),
+        0 10px 20px rgba(28, 28, 28, 0.08),
+        0 30px 60px rgba(28, 28, 28, 0.12),
+        0 60px 100px rgba(201, 168, 130, 0.10);
+    }
+
+    @media (min-width: 768px) {
+      .hero__photo {
+        height: auto;
+        aspect-ratio: 3 / 4;
+        min-height: 480px;
+        animation: float 5s ease-in-out infinite;
+      }
+    }
+
+    /* Camada de profundidade atrás da foto */
+    .hero__photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-surface);
+      border: 1px solid rgba(201, 168, 130, 0.3);
+      transform: translate(12px, 12px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Reflexo de luz vindo do topo */
+    .hero__photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15) 0%,
+        transparent 40%
+      );
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0px) rotate(0.3deg); }
+      50%  { transform: translateY(-12px) rotate(-0.3deg); }
+      100% { transform: translateY(0px) rotate(0.3deg); }
+    }
+
+    /* Desabilita flutuação em telas pequenas */
+    @media (max-width: 767px) {
+      .hero__photo { animation: none; }
+    }
+
+    /* Bloco com número gigante editorial */
+    .hero__stat {
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+      grid-column: 1 / -1;
+      margin-top: clamp(5rem, 9vw, 7rem);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: end;
+    }
+    @media (min-width: 768px) {
+      .hero__stat { grid-template-columns: auto 1fr; gap: 3rem; }
+    }
+    .hero__stat-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      max-width: 30ch;
+      justify-self: end;
+      text-align: right;
+      padding-bottom: 0.875rem;
+    }
+    @media (max-width: 767px) {
+      .hero__stat-label { justify-self: start; text-align: left; }
+    }
+
+    /* =====================================================================
+       SOBRE
+       ===================================================================== */
+    .sobre__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 1024px) {
+      .sobre__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+    }
+    .sobre__title { grid-column: 1 / -1; }
+    .sobre__copy { grid-column: 1 / -1; }
+    .sobre__side { grid-column: 1 / -1; }
+
+    @media (min-width: 1024px) {
+      .sobre__copy { grid-column: 1 / span 6; }
+      .sobre__side { grid-column: 8 / span 5; }
+    }
+
+    .sobre__copy p {
+      font-weight: 300;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+      max-width: 56ch;
+    }
+    .sobre__copy p strong {
+      color: var(--color-text);
+      font-weight: 400;
+    }
+
+    .credentials {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .credentials li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: baseline;
+      padding-block: 1.125rem;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+    }
+    .credentials .num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--color-text-muted);
+    }
+    .credentials .text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.9375rem;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+    }
+
+    /* Bloco editorial à direita: número + sorriso */
+    .sobre__editorial {
+      border: 1px solid var(--color-border);
+      padding: clamp(2rem, 4vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      min-height: 320px;
+      justify-content: space-between;
+    }
+    .sobre__editorial .smile { width: 56px; height: 56px; }
+    .sobre__editorial .megafigure { font-size: clamp(4rem, 9vw, 7rem); }
+    .sobre__editorial p {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      max-width: 22ch;
+    }
+
+    /* =====================================================================
+       SERVIÇOS — lista vertical editorial com linha separadora
+       ===================================================================== */
+    .servicos__head {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    @media (min-width: 1024px) {
+      .servicos__head { display: grid; grid-template-columns: repeat(12, 1fr); }
+      .servicos__head > :first-child { grid-column: 1 / span 7; }
+      .servicos__head > :last-child { grid-column: 9 / span 4; }
+    }
+
+    .servicos-list {
+      border-top: 1px solid var(--color-border);
+    }
+    .servicos-list__item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      align-items: start;
+      padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+      border-bottom: 1px solid rgba(28, 28, 28, 0.18);
+      transition: border-color 300ms var(--ease);
+      position: relative;
+    }
+    .servicos-list__item:hover {
+      border-bottom-color: var(--color-accent);
+    }
+
+    .servicos-list__num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+      color: var(--color-text-muted);
+      padding-top: 0.5rem;
+      min-width: 2.5ch;
+    }
+
+    .servicos-list__body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+    .servicos-list__title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.375rem, 2.5vw, 2rem);
+      letter-spacing: -0.005em;
+      line-height: 1.2;
+    }
+    .servicos-list__title .smile {
+      width: 28px; height: 28px;
+      transition: color 300ms var(--ease);
+    }
+    .servicos-list__item:hover .servicos-list__title .smile {
+      color: var(--color-accent-dark);
+    }
+    .servicos-list__desc {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+
+    .servicos-list__cta {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      padding-top: 0.75rem;
+      white-space: nowrap;
+    }
+    @media (min-width: 768px) { .servicos-list__cta { display: inline-flex; } }
+    .servicos-list__cta .arrow {
+      width: 14px; height: 14px;
+      transition: transform 300ms var(--ease);
+    }
+    .servicos-list__item:hover .servicos-list__cta .arrow { transform: translateX(4px); }
+
+    /* =====================================================================
+       DEPOIMENTOS — grid editorial estático
+       ===================================================================== */
+    .depoimentos__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+    }
+    @media (min-width: 1024px) {
+      .depoimentos__grid {
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--color-border);
+      }
+    }
+    .testimonial {
+      padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2.5vw, 2rem);
+      border-bottom: 1px solid rgba(28, 28, 28, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .testimonial { border-bottom: 0; border-right: 1px solid rgba(28, 28, 28, 0.18); }
+      .testimonial:last-child { border-right: 0; }
+    }
+    .testimonial__quote {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: 4.5rem;
+      line-height: 0.7;
+      color: var(--color-accent);
+      display: inline-block;
+    }
+    .testimonial__text {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--color-text);
+    }
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(28, 28, 28, 0.12);
+      margin-top: auto;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .testimonial__author strong {
+      color: var(--color-text);
+      font-weight: 400;
+    }
+
+    /* =====================================================================
+       CTA AGENDAMENTO — moldura, branco, botão pílula em accent
+       ===================================================================== */
+    .cta-band__box {
+      border: 1px solid var(--color-border);
+      padding: clamp(2.5rem, 6vw, 5rem);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: end;
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .cta-band__box { grid-template-columns: 1fr auto; gap: 4rem; }
+    }
+    .cta-band .smile {
+      width: 56px; height: 56px;
+      margin-bottom: 1.5rem;
+    }
+    .cta-band h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      max-width: 20ch;
+    }
+    .cta-band p {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      margin-top: 1.25rem;
+      max-width: 48ch;
+    }
+    .cta-band .btn--primary {
+      background: var(--color-accent);
+      color: var(--color-text);
+      border-color: var(--color-accent);
+    }
+    .cta-band .btn--primary:hover {
+      background: var(--color-text);
+      color: var(--color-bg);
+      border-color: var(--color-text);
+    }
+
+    /* =====================================================================
+       CONTATO E LOCALIZAÇÃO
+       ===================================================================== */
+    .contato__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 1024px) {
+      .contato__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3rem; }
+    }
+    .contato__info { grid-column: 1 / -1; }
+    .contato__map-wrap { grid-column: 1 / -1; }
+
+    @media (min-width: 1024px) {
+      .contato__info { grid-column: 1 / span 5; }
+      .contato__map-wrap { grid-column: 7 / span 6; }
+    }
+
+    .contato__list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .contato__item {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 1rem;
+      align-items: start;
+      padding-block: 1.5rem;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+    }
+    .contato__item h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.6875rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .contato__item p {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--color-text);
+    }
+
+    .map-frame {
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Grade sutil sugerindo mapa */
+    .map-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(28, 28, 28, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28, 28, 28, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .map-frame__pin {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.875rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .map-frame__pin .marker {
+      width: 14px; height: 14px;
+      border: 1px solid var(--color-border);
+      position: relative;
+    }
+    .map-frame__pin .marker::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      background: var(--color-accent);
+    }
+
+    /* =====================================================================
+       FOOTER
+       ===================================================================== */
+    .footer {
+      padding-block: 2.5rem 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .footer__inner { grid-template-columns: auto 1fr auto; }
+    }
+    .footer__brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .footer__brand small {
+      display: block;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      margin-top: 0.375rem;
+      letter-spacing: 0.16em;
+    }
+    .footer__links {
+      display: flex;
+      gap: 1.75rem;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .footer__links a { color: var(--color-text-muted); }
+    .footer__copy {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      color: var(--color-text-muted);
+      text-align: right;
+    }
+    @media (max-width: 767px) {
+      .footer__copy { text-align: left; }
+      .footer__links { justify-content: flex-start; }
+    }
+
+    /* =====================================================================
+       MOTION — reveal on scroll + page load do hero
+       ===================================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER FIXO — marca com moldura quadrada (referência à logo)
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#topo" class="brand" aria-label="Dr. Ítalo Saffe Scio — Página inicial">
+        <img src="logo italo (1).png" alt="Ítalo Saffe Scio — Reabilitação Oral" class="brand__logo" />
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre" class="link-underline">Sobre</a>
+        <a href="#servicos" class="link-underline">Serviços</a>
+        <a href="#depoimentos" class="link-underline">Depoimentos</a>
+        <a href="#contato" class="link-underline">Contato</a>
+      </nav>
+
+      <a href="#agendar" class="btn btn--primary">
+        Agendar consulta
+      </a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ============================================================
+         1. HERO — sem foto, número editorial gigante, moldura parcial
+         ============================================================ -->
+    <section class="hero">
+      <span class="hero__frame" aria-hidden="true"></span>
+
+      <div class="container">
+        <div class="grid-12">
+
+          <div class="hero__top">
+            <!-- Sorriso decorativo + eyebrow -->
+            <div>
+              <!-- Sorriso fiel ao "O" da logo: círculo + arco interno inferior -->
+              <svg class="smile reveal" data-hero="1" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span class="eyebrow reveal" data-hero="2" style="margin-top: 1rem;">
+                <span class="dot"></span>
+                Implantes · Reabilitação Oral
+              </span>
+            </div>
+
+            <!-- Credenciais à direita -->
+            <div class="hero__credentials reveal" data-hero="3">
+              <strong>CRO-PE 00.000</strong>
+              10 anos de prática clínica
+            </div>
+          </div>
+
+          <!-- Bloco principal: texto à esquerda + foto à direita (desktop) -->
+          <div class="hero__main">
+            <div class="hero__copy">
+              <div class="hero__title-wrap">
+                <h1 class="display reveal" data-hero="4">
+                  Precisão técnica.<br />
+                  <em>Cuidado</em> que escuta.
+                </h1>
+              </div>
+
+              <div class="hero__sub">
+                <p class="lead reveal" data-hero="5">
+                  Implantes dentários e reabilitação oral conduzidos
+                  com método, transparência e tempo de escuta —
+                  porque um sorriso restaurado começa antes do primeiro procedimento.
+                </p>
+                <div class="hero__actions reveal" data-hero="6">
+                  <a href="#agendar" class="btn btn--primary">
+                    Agendar consulta
+                    <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M2 7h10M8 3l4 4-4 4"/>
+                    </svg>
+                  </a>
+                  <a href="#servicos" class="btn btn--ghost">Especialidades</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder da foto com moldura e efeito 3D flutuante -->
+            <div class="hero__photo-wrap reveal" data-hero="9">
+              <div class="hero__photo" role="img" aria-label="Foto do Dr. Ítalo Saffe Scio">
+                Foto Dr. Ítalo Saffe Scio
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__stat">
+            <div class="megafigure reveal" data-hero="7">+<em>800</em></div>
+            <div class="hero__stat-label reveal" data-hero="8">
+              Pacientes atendidos —<br />
+              sorrisos restaurados com método clínico próprio.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule" />
+
+    <!-- ============================================================
+         2. SOBRE
+         ============================================================ -->
+    <section id="sobre">
+      <div class="container">
+        <h2 class="section-title reveal">02 — Sobre</h2>
+
+        <div class="sobre__grid">
+
+          <div class="sobre__copy reveal">
+            <p class="heading-lg" style="margin-bottom: 2rem;">
+              Uma odontologia que <em style="color: var(--color-accent-dark); font-style: normal;">ouve</em> antes de tratar.
+            </p>
+            <p>
+              <strong>Dr. Ítalo Saffe Scio</strong> é especialista em Implantodontia
+              e Reabilitação Oral. Sua prática nasce da convicção de que o melhor
+              tratamento começa pela escuta atenta — antes de qualquer prescrição.
+            </p>
+            <p>
+              Cada plano é construído com transparência: explicação clara de cada
+              etapa, alternativas honestas e o tempo necessário para a decisão.
+              A técnica é precisa; o ritmo, humano.
+            </p>
+
+            <ul class="credentials" style="margin-top: 2.5rem;">
+              <li class="reveal">
+                <span class="num">01</span>
+                <span class="text">Especialista em Implantodontia</span>
+              </li>
+              <li class="reveal">
+                <span class="num">02</span>
+                <span class="text">Pós-graduação em Reabilitação Oral</span>
+              </li>
+              <li class="reveal">
+                <span class="num">03</span>
+                <span class="text">Membro da Associação Brasileira de Odontologia</span>
+              </li>
+              <li class="reveal">
+                <span class="num">04</span>
+                <span class="text">Mais de 10 anos de atuação clínica</span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="sobre__side reveal">
+            <div class="sobre__editorial">
+              <svg class="smile" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <div class="megafigure">10<em>+</em></div>
+              <p>Anos dedicados à reabilitação oral e implantes dentários.</p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. SERVIÇOS — lista vertical editorial
+         ============================================================ -->
+    <section id="servicos" class="section--surface">
+      <div class="container">
+
+        <h2 class="section-title reveal">03 — Especialidades</h2>
+
+        <div class="servicos__head">
+          <div class="reveal">
+            <p class="heading-lg">
+              Cuidado completo, do diagnóstico ao sorriso final.
+            </p>
+          </div>
+          <div class="reveal">
+            <p class="lead" style="font-size: 1rem;">
+              Cada paciente recebe um plano personalizado — sem soluções de prateleira,
+              sem etapas além das necessárias.
+            </p>
+          </div>
+        </div>
+
+        <ul class="servicos-list">
+
+          <li class="servicos-list__item reveal">
+            <span class="servicos-list__num">01</span>
+            <div class="servicos-list__body">
+              <h3 class="servicos-list__title">
+                <svg class="smile" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                  <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                </svg>
+                Implantes Dentários
+              </h3>
+              <p class="servicos-list__desc">
+                Reposição funcional e estética de dentes perdidos com técnicas
+                modernas, planejamento digital e materiais de alta durabilidade.
+              </p>
+            </div>
+            <span class="servicos-list__cta">
+              Saber mais
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4"/>
+              </svg>
+            </span>
+          </li>
+
+          <li class="servicos-list__item reveal">
+            <span class="servicos-list__num">02</span>
+            <div class="servicos-list__body">
+              <h3 class="servicos-list__title">
+                <svg class="smile" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                  <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                </svg>
+                Reabilitação Oral
+              </h3>
+              <p class="servicos-list__desc">
+                Reconstrução completa da função mastigatória e da harmonia do
+                sorriso, planejada e executada etapa por etapa.
+              </p>
+            </div>
+            <span class="servicos-list__cta">
+              Saber mais
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4"/>
+              </svg>
+            </span>
+          </li>
+
+          <li class="servicos-list__item reveal">
+            <span class="servicos-list__num">03</span>
+            <div class="servicos-list__body">
+              <h3 class="servicos-list__title">
+                <svg class="smile" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                  <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                </svg>
+                Próteses Dentárias
+              </h3>
+              <p class="servicos-list__desc">
+                Próteses fixas e removíveis com encaixe preciso, conforto natural
+                e aparência fiel ao sorriso original.
+              </p>
+            </div>
+            <span class="servicos-list__cta">
+              Saber mais
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4"/>
+              </svg>
+            </span>
+          </li>
+
+          <li class="servicos-list__item reveal">
+            <span class="servicos-list__num">04</span>
+            <div class="servicos-list__body">
+              <h3 class="servicos-list__title">
+                <svg class="smile" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                  <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                </svg>
+                Consulta e Avaliação
+              </h3>
+              <p class="servicos-list__desc">
+                Diagnóstico completo, conversa franca sobre o caso e um plano
+                de tratamento honesto desde o primeiro encontro.
+              </p>
+            </div>
+            <span class="servicos-list__cta">
+              Saber mais
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4"/>
+              </svg>
+            </span>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. DEPOIMENTOS — grid editorial 3 colunas, sem scroll
+         ============================================================ -->
+    <section id="depoimentos">
+      <div class="container">
+
+        <h2 class="section-title reveal">04 — Depoimentos</h2>
+
+        <div class="reveal" style="margin-bottom: 3rem;">
+          <p class="heading-lg">Quem confiou o sorriso ao Dr. Ítalo.</p>
+        </div>
+
+        <div class="depoimentos__grid">
+
+          <article class="testimonial reveal">
+            <span class="testimonial__quote" aria-hidden="true">“</span>
+            <p class="testimonial__text">
+              Depois de anos evitando o dentista, finalmente encontrei alguém
+              que me explicou cada passo. Saí da clínica com mais que um implante —
+              saí com tranquilidade.
+            </p>
+            <div class="testimonial__author">
+              <strong>Marina R.</strong>
+              <span>·</span>
+              <span>Recife · PE</span>
+            </div>
+          </article>
+
+          <article class="testimonial reveal">
+            <span class="testimonial__quote" aria-hidden="true">“</span>
+            <p class="testimonial__text">
+              O Dr. Ítalo refez toda a minha arcada superior. O resultado é tão
+              natural que minha filha de seis anos não percebeu a diferença —
+              só comentou que eu estava sorrindo mais.
+            </p>
+            <div class="testimonial__author">
+              <strong>Antônio L.</strong>
+              <span>·</span>
+              <span>Olinda · PE</span>
+            </div>
+          </article>
+
+          <article class="testimonial reveal">
+            <span class="testimonial__quote" aria-hidden="true">“</span>
+            <p class="testimonial__text">
+              Atenção, honestidade e técnica. Recusou um procedimento caro
+              que outros dentistas tinham indicado e propôs algo mais simples
+              que resolveu de verdade.
+            </p>
+            <div class="testimonial__author">
+              <strong>Camila S.</strong>
+              <span>·</span>
+              <span>Jaboatão · PE</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. CTA AGENDAMENTO — moldura, sem fundo accent
+         ============================================================ -->
+    <section id="agendar" class="section--surface">
+      <div class="container">
+        <div class="cta-band__box reveal">
+          <div>
+            <svg class="smile" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            </svg>
+            <h2>Vamos conversar sobre o seu sorriso.</h2>
+            <p>
+              A primeira consulta é uma escuta — sem pressa, sem promessas
+              exageradas. Apenas um plano honesto para o seu caso.
+            </p>
+          </div>
+          <a href="#contato" class="btn btn--primary">
+            Agendar agora
+            <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. CONTATO E LOCALIZAÇÃO
+         ============================================================ -->
+    <section id="contato">
+      <div class="container">
+
+        <h2 class="section-title reveal">06 — Contato</h2>
+
+        <div class="contato__grid">
+
+          <div class="contato__info">
+            <p class="heading-lg reveal" style="margin-bottom: 2.5rem;">
+              Onde nos encontrar.
+            </p>
+            <ul class="contato__list">
+              <li class="contato__item reveal">
+                <h4>Endereço</h4>
+                <p>[Rua, número — Bairro]<br />Cidade · UF</p>
+              </li>
+              <li class="contato__item reveal">
+                <h4>WhatsApp</h4>
+                <p><a href="https://wa.me/5500000000000" class="link-underline">(00) 00000-0000</a></p>
+              </li>
+              <li class="contato__item reveal">
+                <h4>E-mail</h4>
+                <p><a href="mailto:contato@italoscio.com.br" class="link-underline">contato@italoscio.com.br</a></p>
+              </li>
+              <li class="contato__item reveal">
+                <h4>Horários</h4>
+                <p>Seg–Sex · 09h às 18h<br />Sábados · sob agendamento</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contato__map-wrap reveal">
+            <div class="map-frame" role="img" aria-label="Mapa da localização da clínica">
+              <div class="map-frame__pin">
+                <span class="marker" aria-hidden="true"></span>
+                <span>Clínica · Recife</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        Dr. Ítalo Saffe Scio
+        <small>CRO-PE 00.000 · Odontologia</small>
+      </div>
+      <nav class="footer__links" aria-label="Rodapé">
+        <a href="#sobre" class="link-underline">Sobre</a>
+        <a href="#servicos" class="link-underline">Serviços</a>
+        <a href="#depoimentos" class="link-underline">Depoimentos</a>
+        <a href="#contato" class="link-underline">Contato</a>
+      </nav>
+      <p class="footer__copy">
+        © <span id="ano"></span> · Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // =====================================================================
+    // Ano dinâmico no footer
+    // =====================================================================
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // =====================================================================
+    // Reveal on scroll — IntersectionObserver
+    // Threshold 0.15, fade-in + translateY 12px → 0
+    // =====================================================================
+    (function () {
+      const reveals = document.querySelectorAll('.reveal:not([data-hero])');
+
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(el => io.observe(el));
+    })();
+
+    // =====================================================================
+    // Page load — fade-in do hero com stagger de 80ms
+    // Elementos marcados com data-hero="N" são revelados em sequência
+    // =====================================================================
+    (function () {
+      const heroEls = Array.from(document.querySelectorAll('[data-hero]'))
+        .sort((a, b) => Number(a.dataset.hero) - Number(b.dataset.hero));
+
+      // Pequeno delay inicial para garantir paint
+      requestAnimationFrame(() => {
+        heroEls.forEach((el, i) => {
+          setTimeout(() => el.classList.add('is-visible'), 80 * i);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
