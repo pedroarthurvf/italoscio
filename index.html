@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Ítalo Saffe Scio — Implantes e Reabilitação Oral</title>
-  <meta name="description" content="Especialista em implantes dentários e reabilitação oral. Precisão técnica, escuta atenta e sorrisos restaurados." />
+  <title>Dr. Ítalo Saffe Scio · Reabilitação oral em Juiz de Fora</title>
+  <meta name="description" content="Reabilitação oral e próteses com mínima intervenção. Preservamos o que já é seu antes de substituir. Atendimento em Juiz de Fora, MG." />
 
   <!-- Tipografia: Plus Jakarta Sans (UI/títulos) + Instrument Sans (corpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -250,12 +250,12 @@
       align-items: center;
     }
     .brand__logo {
-      height: 80px;
+      height: 36px;
       width: auto;
       display: block;
     }
     @media (min-width: 1024px) {
-      .brand__logo { height: 120px; }
+      .brand__logo { height: 44px; }
     }
 
     .nav {
@@ -298,13 +298,7 @@
     }
 
     .hero__top {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: clamp(3rem, 6vw, 5rem);
+      display: none;
     }
 
     /* SVG sorriso — fiel ao "O" da logo: círculo com arco interno inferior */
@@ -341,7 +335,7 @@
       .hero__main {
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
         gap: clamp(2.5rem, 5vw, 4.5rem);
-        align-items: center;
+        align-items: start;
       }
     }
 
@@ -398,7 +392,6 @@
         height: auto;
         aspect-ratio: 3 / 4;
         min-height: 480px;
-        animation: float 5s ease-in-out infinite;
       }
     }
 
@@ -427,16 +420,6 @@
       pointer-events: none;
     }
 
-    @keyframes float {
-      0%   { transform: translateY(0px) rotate(0.3deg); }
-      50%  { transform: translateY(-12px) rotate(-0.3deg); }
-      100% { transform: translateY(0px) rotate(0.3deg); }
-    }
-
-    /* Desabilita flutuação em telas pequenas */
-    @media (max-width: 767px) {
-      .hero__photo { animation: none; }
-    }
 
     /* Bloco com número gigante editorial */
     .hero__stat {
@@ -919,19 +902,19 @@
        ============================================================ -->
   <header class="header">
     <div class="container header__inner">
-      <a href="#topo" class="brand" aria-label="Dr. Ítalo Saffe Scio — Página inicial">
-        <img src="logo italo (1).png" alt="Ítalo Saffe Scio — Reabilitação Oral" class="brand__logo" />
+      <a href="#topo" class="brand" aria-label="Dr. Ítalo Saffe Scio · Página inicial">
+        <img src="logo italo (1).png" alt="Ítalo Saffe Scio · Reabilitação oral" class="brand__logo" />
       </a>
 
       <nav class="nav" aria-label="Navegação principal">
         <a href="#sobre" class="link-underline">Sobre</a>
-        <a href="#servicos" class="link-underline">Serviços</a>
+        <a href="#servicos" class="link-underline">Especialidades</a>
         <a href="#depoimentos" class="link-underline">Depoimentos</a>
         <a href="#contato" class="link-underline">Contato</a>
       </nav>
 
       <a href="#agendar" class="btn btn--primary">
-        Agendar consulta
+        Falar no WhatsApp
       </a>
     </div>
   </header>
@@ -947,51 +930,39 @@
       <div class="container">
         <div class="grid-12">
 
-          <div class="hero__top">
-            <!-- Sorriso decorativo + eyebrow -->
-            <div>
-              <!-- Sorriso fiel ao "O" da logo: círculo + arco interno inferior -->
+          <!-- Bloco principal: texto à esquerda + foto à direita (desktop) -->
+          <div class="hero__main">
+            <div class="hero__copy">
+              <!-- Sorriso decorativo + eyebrow alinhado ao topo da foto -->
               <svg class="smile reveal" data-hero="1" viewBox="0 0 56 56" fill="none" aria-hidden="true">
                 <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
               </svg>
-              <span class="eyebrow reveal" data-hero="2" style="margin-top: 1rem;">
+              <span class="eyebrow reveal" data-hero="2" style="margin-top: 1rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); display: flex;">
                 <span class="dot"></span>
-                Implantes · Reabilitação Oral
+                Reabilitação oral
               </span>
-            </div>
 
-            <!-- Credenciais à direita -->
-            <div class="hero__credentials reveal" data-hero="3">
-              <strong>CRO-PE 00.000</strong>
-              10 anos de prática clínica
-            </div>
-          </div>
-
-          <!-- Bloco principal: texto à esquerda + foto à direita (desktop) -->
-          <div class="hero__main">
-            <div class="hero__copy">
               <div class="hero__title-wrap">
                 <h1 class="display reveal" data-hero="4">
-                  Precisão técnica.<br />
-                  <em>Cuidado</em> que escuta.
+                  <em>Volte</em> a sorrir<br />
+                  sem pensar duas vezes.
                 </h1>
               </div>
 
               <div class="hero__sub">
                 <p class="lead reveal" data-hero="5">
-                  Implantes dentários e reabilitação oral conduzidos
-                  com método, transparência e tempo de escuta —
-                  porque um sorriso restaurado começa antes do primeiro procedimento.
+                  A gente preserva o que já é seu antes de qualquer substituição.
+                  Quando precisa intervir, faz só o necessário.
                 </p>
                 <div class="hero__actions reveal" data-hero="6">
                   <a href="#agendar" class="btn btn--primary">
-                    Agendar consulta
+                    Falar agora no WhatsApp
                     <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M2 7h10M8 3l4 4-4 4"/>
                     </svg>
                   </a>
-                  <a href="#servicos" class="btn btn--ghost">Especialidades</a>
+                  <a href="#servicos" class="btn btn--ghost">Ver especialidades</a>
                 </div>
               </div>
             </div>
@@ -1001,14 +972,6 @@
               <div class="hero__photo" role="img" aria-label="Foto do Dr. Ítalo Saffe Scio">
                 Foto Dr. Ítalo Saffe Scio
               </div>
-            </div>
-          </div>
-
-          <div class="hero__stat">
-            <div class="megafigure reveal" data-hero="7">+<em>800</em></div>
-            <div class="hero__stat-label reveal" data-hero="8">
-              Pacientes atendidos —<br />
-              sorrisos restaurados com método clínico próprio.
             </div>
           </div>
 
@@ -1023,41 +986,41 @@
          ============================================================ -->
     <section id="sobre">
       <div class="container">
-        <h2 class="section-title reveal">02 — Sobre</h2>
+        <h2 class="section-title reveal">02 · Sobre</h2>
 
         <div class="sobre__grid">
 
           <div class="sobre__copy reveal">
             <p class="heading-lg" style="margin-bottom: 2rem;">
-              Uma odontologia que <em style="color: var(--color-accent-dark); font-style: normal;">ouve</em> antes de tratar.
+              Faço odontologia que <em style="color: var(--color-accent-dark); font-style: normal;">escuta</em> antes de tratar.
             </p>
             <p>
-              <strong>Dr. Ítalo Saffe Scio</strong> é especialista em Implantodontia
-              e Reabilitação Oral. Sua prática nasce da convicção de que o melhor
-              tratamento começa pela escuta atenta — antes de qualquer prescrição.
+              <strong>Sou o Ítalo.</strong> Trabalho com reabilitação oral,
+              mas o que me move é fazer o mínimo necessário para você voltar
+              a mastigar, sorrir e viver bem.
             </p>
             <p>
-              Cada plano é construído com transparência: explicação clara de cada
-              etapa, alternativas honestas e o tempo necessário para a decisão.
-              A técnica é precisa; o ritmo, humano.
+              A tecnologia entra como ferramenta de todo dia para enxergar melhor,
+              planejar com cuidado e tratar com precisão. Cada boca é diferente.
+              Por isso a conversa vem sempre antes do procedimento.
             </p>
 
             <ul class="credentials" style="margin-top: 2.5rem;">
               <li class="reveal">
                 <span class="num">01</span>
-                <span class="text">Especialista em Implantodontia</span>
+                <span class="text">Mínima intervenção primeiro</span>
               </li>
               <li class="reveal">
                 <span class="num">02</span>
-                <span class="text">Pós-graduação em Reabilitação Oral</span>
+                <span class="text">Tecnologia em todas as etapas</span>
               </li>
               <li class="reveal">
                 <span class="num">03</span>
-                <span class="text">Membro da Associação Brasileira de Odontologia</span>
+                <span class="text">Plano explicado com calma, sem pressão</span>
               </li>
               <li class="reveal">
                 <span class="num">04</span>
-                <span class="text">Mais de 10 anos de atuação clínica</span>
+                <span class="text">Acompanhamento depois do tratamento</span>
               </li>
             </ul>
           </div>
@@ -1068,8 +1031,8 @@
                 <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
               </svg>
-              <div class="megafigure">10<em>+</em></div>
-              <p>Anos dedicados à reabilitação oral e implantes dentários.</p>
+              <div class="megafigure">100<em>%</em></div>
+              <p>Dos planos pensados do zero, sem solução de prateleira.</p>
             </div>
           </aside>
 
@@ -1083,18 +1046,18 @@
     <section id="servicos" class="section--surface">
       <div class="container">
 
-        <h2 class="section-title reveal">03 — Especialidades</h2>
+        <h2 class="section-title reveal">03 · Especialidades</h2>
 
         <div class="servicos__head">
           <div class="reveal">
             <p class="heading-lg">
-              Cuidado completo, do diagnóstico ao sorriso final.
+              Cuidado pensado pra você, da primeira conversa ao resultado.
             </p>
           </div>
           <div class="reveal">
             <p class="lead" style="font-size: 1rem;">
-              Cada paciente recebe um plano personalizado — sem soluções de prateleira,
-              sem etapas além das necessárias.
+              Cada plano é montado pro seu caso.
+              Sem etapa que não precisa, sem solução genérica.
             </p>
           </div>
         </div>
@@ -1109,11 +1072,11 @@
                   <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
                 </svg>
-                Implantes Dentários
+                Diagnóstico e Planejamento
               </h3>
               <p class="servicos-list__desc">
-                Reposição funcional e estética de dentes perdidos com técnicas
-                modernas, planejamento digital e materiais de alta durabilidade.
+                Antes de qualquer procedimento, a gente entende o que está
+                acontecendo na sua boca. O plano só começa depois de ouvir você.
               </p>
             </div>
             <span class="servicos-list__cta">
@@ -1135,8 +1098,8 @@
                 Reabilitação Oral
               </h3>
               <p class="servicos-list__desc">
-                Reconstrução completa da função mastigatória e da harmonia do
-                sorriso, planejada e executada etapa por etapa.
+                Quando a boca toda precisa de cuidado, a gente trata como um conjunto.
+                Você volta a comer o que quer e a sorrir sem pensar.
               </p>
             </div>
             <span class="servicos-list__cta">
@@ -1158,8 +1121,8 @@
                 Próteses Dentárias
               </h3>
               <p class="servicos-list__desc">
-                Próteses fixas e removíveis com encaixe preciso, conforto natural
-                e aparência fiel ao sorriso original.
+                Prótese bem feita some na rotina.
+                Você só lembra dela porque está mastigando tranquilo.
               </p>
             </div>
             <span class="servicos-list__cta">
@@ -1181,8 +1144,8 @@
                 Consulta e Avaliação
               </h3>
               <p class="servicos-list__desc">
-                Diagnóstico completo, conversa franca sobre o caso e um plano
-                de tratamento honesto desde o primeiro encontro.
+                Você conta o que está sentindo. Eu olho com calma e digo o que vejo.
+                Depois a gente decide juntos o melhor caminho.
               </p>
             </div>
             <span class="servicos-list__cta">
@@ -1203,10 +1166,10 @@
     <section id="depoimentos">
       <div class="container">
 
-        <h2 class="section-title reveal">04 — Depoimentos</h2>
+        <h2 class="section-title reveal">04 · Depoimentos</h2>
 
         <div class="reveal" style="margin-bottom: 3rem;">
-          <p class="heading-lg">Quem confiou o sorriso ao Dr. Ítalo.</p>
+          <p class="heading-lg">Quem já confiou o sorriso ao Ítalo.</p>
         </div>
 
         <div class="depoimentos__grid">
@@ -1214,42 +1177,42 @@
           <article class="testimonial reveal">
             <span class="testimonial__quote" aria-hidden="true">“</span>
             <p class="testimonial__text">
-              Depois de anos evitando o dentista, finalmente encontrei alguém
-              que me explicou cada passo. Saí da clínica com mais que um implante —
-              saí com tranquilidade.
+              Cheguei achando que ia ter que arrancar tudo, porque foi isso que
+              outro dentista falou. O Ítalo olhou o exame com calma e disse
+              que dava pra preservar dois dentes. Hoje mastigo normal de novo.
             </p>
             <div class="testimonial__author">
-              <strong>Marina R.</strong>
+              <strong>Marina Cavalcanti</strong>
               <span>·</span>
-              <span>Recife · PE</span>
+              <span>Juiz de Fora · MG</span>
             </div>
           </article>
 
           <article class="testimonial reveal">
             <span class="testimonial__quote" aria-hidden="true">“</span>
             <p class="testimonial__text">
-              O Dr. Ítalo refez toda a minha arcada superior. O resultado é tão
-              natural que minha filha de seis anos não percebeu a diferença —
-              só comentou que eu estava sorrindo mais.
+              Fiz a reabilitação em duas etapas e em todas as consultas
+              ele explicou direitinho o que ia acontecer. Sem conversa de vendedor,
+              sem empurrar coisa que eu não precisava.
             </p>
             <div class="testimonial__author">
-              <strong>Antônio L.</strong>
+              <strong>Roberto Lima</strong>
               <span>·</span>
-              <span>Olinda · PE</span>
+              <span>Juiz de Fora · MG</span>
             </div>
           </article>
 
           <article class="testimonial reveal">
             <span class="testimonial__quote" aria-hidden="true">“</span>
             <p class="testimonial__text">
-              Atenção, honestidade e técnica. Recusou um procedimento caro
-              que outros dentistas tinham indicado e propôs algo mais simples
-              que resolveu de verdade.
+              Atendimento tranquilo, ambiente limpo e ele responde no WhatsApp
+              mesmo fora do horário quando bate uma dúvida.
+              Coisa rara hoje em dia.
             </p>
             <div class="testimonial__author">
-              <strong>Camila S.</strong>
+              <strong>Camila Andrade</strong>
               <span>·</span>
-              <span>Jaboatão · PE</span>
+              <span>Juiz de Fora · MG</span>
             </div>
           </article>
 
@@ -1268,14 +1231,14 @@
               <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
               <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
             </svg>
-            <h2>Vamos conversar sobre o seu sorriso.</h2>
+            <h2>Bora conversar sobre o seu sorriso?</h2>
             <p>
-              A primeira consulta é uma escuta — sem pressa, sem promessas
-              exageradas. Apenas um plano honesto para o seu caso.
+              Primeira conversa é pra entender o seu caso. Sem cobrança,
+              sem promessa exagerada, sem empurrar tratamento.
             </p>
           </div>
           <a href="#contato" class="btn btn--primary">
-            Agendar agora
+            Chamar no WhatsApp
             <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M2 7h10M8 3l4 4-4 4"/>
             </svg>
@@ -1290,18 +1253,18 @@
     <section id="contato">
       <div class="container">
 
-        <h2 class="section-title reveal">06 — Contato</h2>
+        <h2 class="section-title reveal">06 · Contato</h2>
 
         <div class="contato__grid">
 
           <div class="contato__info">
             <p class="heading-lg reveal" style="margin-bottom: 2.5rem;">
-              Onde nos encontrar.
+              Onde fica e como falar.
             </p>
             <ul class="contato__list">
               <li class="contato__item reveal">
                 <h4>Endereço</h4>
-                <p>[Rua, número — Bairro]<br />Cidade · UF</p>
+                <p>[Rua, número · Bairro]<br />Cidade · UF</p>
               </li>
               <li class="contato__item reveal">
                 <h4>WhatsApp</h4>
@@ -1313,7 +1276,7 @@
               </li>
               <li class="contato__item reveal">
                 <h4>Horários</h4>
-                <p>Seg–Sex · 09h às 18h<br />Sábados · sob agendamento</p>
+                <p>Seg a sex · 09h às 18h<br />Sábado · com agendamento</p>
               </li>
             </ul>
           </div>
@@ -1322,7 +1285,7 @@
             <div class="map-frame" role="img" aria-label="Mapa da localização da clínica">
               <div class="map-frame__pin">
                 <span class="marker" aria-hidden="true"></span>
-                <span>Clínica · Recife</span>
+                <span>Clínica · Juiz de Fora</span>
               </div>
             </div>
           </div>
@@ -1339,11 +1302,11 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         Dr. Ítalo Saffe Scio
-        <small>CRO-PE 00.000 · Odontologia</small>
+        <small>CRO-PE 00.000</small>
       </div>
       <nav class="footer__links" aria-label="Rodapé">
         <a href="#sobre" class="link-underline">Sobre</a>
-        <a href="#servicos" class="link-underline">Serviços</a>
+        <a href="#servicos" class="link-underline">Especialidades</a>
         <a href="#depoimentos" class="link-underline">Depoimentos</a>
         <a href="#contato" class="link-underline">Contato</a>
       </nav>
