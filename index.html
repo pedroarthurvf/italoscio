@@ -271,9 +271,18 @@
       color: var(--color-text);
     }
 
-    .header .btn { padding: 0.75rem 1.375rem; font-size: 0.6875rem; }
+    .header .btn { padding: 0.625rem 1.125rem; font-size: 0.6875rem; }
 
-    @media (min-width: 768px) { .nav { display: flex; } }
+    /* CTA do header: rótulo compacto no mobile, completo no desktop */
+    .header__cta-full { display: none; }
+    .header__cta-short { display: inline; }
+
+    @media (min-width: 768px) {
+      .nav { display: flex; }
+      .header .btn { padding: 0.75rem 1.375rem; }
+      .header__cta-full { display: inline; }
+      .header__cta-short { display: none; }
+    }
 
     /* =====================================================================
        HERO — sem foto, número gigante como elemento gráfico
@@ -623,63 +632,116 @@
     .servicos-list__item:hover .servicos-list__cta .arrow { transform: translateX(4px); }
 
     /* =====================================================================
-       DEPOIMENTOS — grid editorial estático
+       CASOS — galeria navegável (foto + texto do Ítalo lado a lado)
        ===================================================================== */
-    .depoimentos__grid {
+    .cases__viewport {
+      overflow: hidden;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .cases__track {
+      display: flex;
+      transition: transform 600ms var(--ease);
+      will-change: transform;
+    }
+    .case {
+      flex: 0 0 100%;
+      min-width: 0;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
-      border-top: 1px solid var(--color-border);
+      gap: clamp(1.75rem, 4vw, 3rem);
+      align-items: stretch;
     }
     @media (min-width: 1024px) {
-      .depoimentos__grid {
-        grid-template-columns: repeat(3, 1fr);
-        border-bottom: 1px solid var(--color-border);
-      }
+      .case { grid-template-columns: 0.9fr 1.1fr; }
     }
-    .testimonial {
-      padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2.5vw, 2rem);
-      border-bottom: 1px solid rgba(28, 28, 28, 0.18);
+    .case__photo {
+      margin: 0;
+      background: var(--color-surface);
+    }
+    .case__photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 0;
+    }
+    .case__body {
       display: flex;
       flex-direction: column;
       gap: 1.75rem;
-      position: relative;
+      justify-content: center;
+      padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 2.5rem);
     }
-    @media (min-width: 1024px) {
-      .testimonial { border-bottom: 0; border-right: 1px solid rgba(28, 28, 28, 0.18); }
-      .testimonial:last-child { border-right: 0; }
-    }
-    .testimonial__quote {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 300;
-      font-size: 4.5rem;
-      line-height: 0.7;
-      color: var(--color-accent);
-      display: inline-block;
-    }
-    .testimonial__text {
+    .case__text {
       font-family: 'Instrument Sans', sans-serif;
       font-weight: 300;
       font-size: 1.0625rem;
       line-height: 1.65;
       color: var(--color-text);
     }
-    .testimonial__author {
+    .case__text p { margin: 0 0 1rem; }
+    .case__text p:last-child { margin-bottom: 0; }
+    .case__meta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       padding-top: 1.25rem;
       border-top: 1px solid rgba(28, 28, 28, 0.12);
-      margin-top: auto;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--color-text-muted);
     }
-    .testimonial__author strong {
+    .case__meta strong {
       color: var(--color-text);
       font-weight: 400;
+    }
+    .cases__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .cases__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 44px; height: 44px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: background 300ms var(--ease), color 300ms var(--ease), border-color 300ms var(--ease);
+    }
+    .cases__arrow:hover {
+      background: var(--color-text);
+      border-color: var(--color-text);
+      color: var(--color-bg);
+    }
+    .cases__arrow svg { width: 20px; height: 20px; }
+    .cases__dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.625rem;
+    }
+    .cases__dot {
+      width: 7px; height: 7px;
+      padding: 0;
+      border: 1px solid var(--color-text-muted);
+      background: transparent;
+      border-radius: 0;
+      cursor: pointer;
+      transition: background 300ms var(--ease), border-color 300ms var(--ease);
+    }
+    .cases__dot.is-active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
     }
 
     /* =====================================================================
@@ -752,11 +814,14 @@
     }
     .contato__item {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 1rem;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
       align-items: start;
       padding-block: 1.5rem;
       border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+    }
+    @media (min-width: 768px) {
+      .contato__item { grid-template-columns: 1fr 1.5fr; gap: 1rem; }
     }
     .contato__item h4 {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -772,6 +837,7 @@
       font-size: 1rem;
       line-height: 1.55;
       color: var(--color-text);
+      overflow-wrap: anywhere;
     }
 
     .map-frame {
@@ -909,12 +975,13 @@
       <nav class="nav" aria-label="Navegação principal">
         <a href="#sobre" class="link-underline">Sobre</a>
         <a href="#servicos" class="link-underline">Especialidades</a>
-        <a href="#depoimentos" class="link-underline">Depoimentos</a>
+        <a href="#casos" class="link-underline">Casos</a>
         <a href="#contato" class="link-underline">Contato</a>
       </nav>
 
-      <a href="#agendar" class="btn btn--primary">
-        Falar no WhatsApp
+      <a href="#agendar" class="btn btn--primary header__cta">
+        <span class="header__cta-full">Falar no WhatsApp</span>
+        <span class="header__cta-short">WhatsApp</span>
       </a>
     </div>
   </header>
@@ -1161,62 +1228,111 @@
     </section>
 
     <!-- ============================================================
-         4. DEPOIMENTOS — grid editorial 3 colunas, sem scroll
+         4. CASOS — galeria navegável por setas (foto + texto do Ítalo)
+         Adicionar um caso = colar um novo <article class="case" data-case>
          ============================================================ -->
-    <section id="depoimentos">
+    <section id="casos">
       <div class="container">
 
-        <h2 class="section-title reveal">04 · Depoimentos</h2>
+        <h2 class="section-title reveal">04 · Casos</h2>
 
         <div class="reveal" style="margin-bottom: 3rem;">
-          <p class="heading-lg">Quem já confiou o sorriso ao Ítalo.</p>
+          <p class="heading-lg">Alguns casos que passaram por aqui.</p>
         </div>
 
-        <div class="depoimentos__grid">
+        <div class="reveal">
+          <div class="cases" data-cases>
+            <div class="cases__viewport">
+              <div class="cases__track" data-cases-track>
 
-          <article class="testimonial reveal">
-            <span class="testimonial__quote" aria-hidden="true">“</span>
-            <p class="testimonial__text">
-              Cheguei achando que ia ter que arrancar tudo, porque foi isso que
-              outro dentista falou. O Ítalo olhou o exame com calma e disse
-              que dava pra preservar dois dentes. Hoje mastigo normal de novo.
-            </p>
-            <div class="testimonial__author">
-              <strong>Marina Cavalcanti</strong>
-              <span>·</span>
-              <span>Juiz de Fora · MG</span>
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/lorraine.jpeg" alt="Lorraine, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>A Lorraine conviveu com facetas em resina por 5 anos.</p>
+                    <p>No começo, elas faziam sentido. Mas com o tempo, deixaram de ser confortáveis e já não traziam a naturalidade que ela procurava. Sorrir já não era tão espontâneo.</p>
+                    <p>Foi aí que ela decidiu mudar. Fizemos um trabalho restaurador completo, buscando mais conforto, naturalidade e equilíbrio.</p>
+                    <p>E ver a Lorraine sorrindo com mais leveza foi a melhor parte de tudo 🤝</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Lorraine</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/valeska.jpeg" alt="Valeska, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>Pra muita gente, ir ao dentista não é simples.</p>
+                    <p>A Valeska morre de medo de dentista, mas aos poucos fomos criando confiança. Ela é minha vizinha, me vê praticamente todo dia e me escolheu pra cuidar do sorriso dela.</p>
+                    <p>Fico feliz demais quando alguém que convive comigo no dia a dia confia no meu trabalho dessa forma.</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Valeska</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/beatriz.jpeg" alt="Beatriz, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>A Beatriz veio hoje pra consulta de manutenção. Ela veio por indicação do namorado, que atendi semana passada.</p>
+                    <p>Já tem o hábito de cuidar. Não espera incomodar nem deixa virar problema.</p>
+                    <p>Vai mantendo, ajustando, acompanhando. No fim, é isso que faz diferença.</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Beatriz</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/felipe.jpeg" alt="Felipe, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>Quando era criança, o Felipe levou uma pancada em um dente. Na época, não deu nada. Seguiu a vida normal.</p>
+                    <p>E por anos, não deu problema. Até que um dia, o dente quebrou. Sem aviso.</p>
+                    <p>Foi aí que ele decidiu começar a tratar. A gente ainda não finalizou tudo, mas o processo já começou.</p>
+                    <p>E, muitas vezes, o mais difícil é dar o primeiro passo.</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Felipe</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              </div>
             </div>
-          </article>
-
-          <article class="testimonial reveal">
-            <span class="testimonial__quote" aria-hidden="true">“</span>
-            <p class="testimonial__text">
-              Fiz a reabilitação em duas etapas e em todas as consultas
-              ele explicou direitinho o que ia acontecer. Sem conversa de vendedor,
-              sem empurrar coisa que eu não precisava.
-            </p>
-            <div class="testimonial__author">
-              <strong>Roberto Lima</strong>
-              <span>·</span>
-              <span>Juiz de Fora · MG</span>
+            <div class="cases__controls">
+              <button type="button" class="cases__arrow cases__arrow--prev" data-cases-prev aria-label="Caso anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <div class="cases__dots" data-cases-dots role="tablist" aria-label="Navegar entre os casos"></div>
+              <button type="button" class="cases__arrow cases__arrow--next" data-cases-next aria-label="Próximo caso">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
             </div>
-          </article>
-
-          <article class="testimonial reveal">
-            <span class="testimonial__quote" aria-hidden="true">“</span>
-            <p class="testimonial__text">
-              Atendimento tranquilo, ambiente limpo e ele responde no WhatsApp
-              mesmo fora do horário quando bate uma dúvida.
-              Coisa rara hoje em dia.
-            </p>
-            <div class="testimonial__author">
-              <strong>Camila Andrade</strong>
-              <span>·</span>
-              <span>Juiz de Fora · MG</span>
-            </div>
-          </article>
-
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -1307,7 +1423,7 @@
       <nav class="footer__links" aria-label="Rodapé">
         <a href="#sobre" class="link-underline">Sobre</a>
         <a href="#servicos" class="link-underline">Especialidades</a>
-        <a href="#depoimentos" class="link-underline">Depoimentos</a>
+        <a href="#casos" class="link-underline">Casos</a>
         <a href="#contato" class="link-underline">Contato</a>
       </nav>
       <p class="footer__copy">
@@ -1360,6 +1476,52 @@
           setTimeout(() => el.classList.add('is-visible'), 80 * i);
         });
       });
+    })();
+
+    // =====================================================================
+    // Casos — navegação manual por setas e dots
+    // Cada <article data-case> é um slide. Com 1 só caso, controles ocultos.
+    // =====================================================================
+    (function () {
+      const root = document.querySelector('[data-cases]');
+      if (!root) return;
+
+      const track = root.querySelector('[data-cases-track]');
+      const dotsWrap = root.querySelector('[data-cases-dots]');
+      const prevBtn = root.querySelector('[data-cases-prev]');
+      const nextBtn = root.querySelector('[data-cases-next]');
+      const slides = Array.from(track.querySelectorAll('[data-case]'));
+      const n = slides.length;
+
+      // Com um único caso não há o que navegar
+      if (n <= 1) {
+        const controls = root.querySelector('.cases__controls');
+        if (controls) controls.style.display = 'none';
+        return;
+      }
+
+      let index = 0;
+
+      // Cria os dots
+      const dots = slides.map((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'cases__dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Caso ' + (i + 1));
+        dot.addEventListener('click', () => go(i));
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      function go(i) {
+        index = (i + n) % n;
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
+      }
+
+      prevBtn.addEventListener('click', () => go(index - 1));
+      nextBtn.addEventListener('click', () => go(index + 1));
     })();
   </script>
 </body>
