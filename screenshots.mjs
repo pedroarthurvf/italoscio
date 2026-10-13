@@ -28,18 +28,37 @@ async function loadPuppeteer() {
     return require('puppeteer');
   } catch {}
   // Fallback: puppeteer é CommonJS — require() no diretório do pacote
-  // resolve o "main" via package.json.
+  // resolve o "main" via package.json. Usa a versão MAIS NOVA encontrada
+  // (versões antigas esperam builds do Chrome que já saíram do cache).
   const projectsDir = path.join(homedir(), 'Desktop', 'Projects');
   if (existsSync(projectsDir)) {
-    for (const dir of readdirSync(projectsDir)) {
-      const candidate = path.join(projectsDir, dir, 'node_modules', 'puppeteer');
-      if (existsSync(candidate)) {
-        const mod = require(candidate);
-        return mod.default || mod;
-      }
+    const candidates = readdirSync(projectsDir)
+      .map((dir) => path.join(projectsDir, dir, 'node_modules', 'puppeteer'))
+      .filter((p) => existsSync(path.join(p, 'package.json')))
+      .map((p) => ({ p, v: require(path.join(p, 'package.json')).version }))
+      .sort((a, b) => b.v.localeCompare(a.v, undefined, { numeric: true }));
+    if (candidates.length) {
+      const mod = require(candidates[0].p);
+      return mod.default || mod;
     }
   }
   throw new Error('Puppeteer não encontrado no disco. Instale-o em algum projeto ou globalmente.');
+}
+
+// ---- Abre o Chrome: o da versão do Puppeteer, ou qualquer um em cache ----
+async function launchBrowser(puppeteer) {
+  try {
+    return await puppeteer.launch({ headless: true });
+  } catch (err) {
+    const cache = path.join(homedir(), '.cache', 'puppeteer', 'chrome');
+    const builds = existsSync(cache) ? readdirSync(cache).sort().reverse() : [];
+    for (const build of builds) {
+      const bin = path.join(cache, build, 'chrome-mac-arm64',
+        'Google Chrome for Testing.app', 'Contents', 'MacOS', 'Google Chrome for Testing');
+      if (existsSync(bin)) return puppeteer.launch({ headless: true, executablePath: bin });
+    }
+    throw err;
+  }
 }
 
 // ---- Configuração das capturas --------------------------------------
@@ -55,7 +74,7 @@ async function run() {
   const puppeteer = await loadPuppeteer();
   if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
 
-  const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await launchBrowser(puppeteer);
   try {
     for (const vp of viewports) {
       const page = await browser.newPage();
@@ -70,9 +89,9 @@ async function run() {
       });
       await new Promise((r) => setTimeout(r, 300));
 
-      // Header (topo da página)
-      const header = await page.$('.header');
-      if (header) await header.screenshot({ path: path.join(OUT, `${vp.name}-header.png`) });
+
+      // Primeira dobra (o que aparece sem rolar)
+      await page.screenshot({ path: path.join(OUT, `${vp.name}-fold.png`) });
 
       // Página inteira
       await page.screenshot({ path: path.join(OUT, `${vp.name}-full.png`), fullPage: true });

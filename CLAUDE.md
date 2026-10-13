@@ -35,7 +35,7 @@ To preview: open `index.html` directly in a browser (`file://` works fine).
 
 ## Hero structure
 
-`.hero__main` is a 2-column CSS grid (1.2fr / 1fr). The smile SVG and eyebrow span live inside `.hero__copy` (left column) so the photo column aligns vertically with them. `.hero__top` is hidden (`display: none`) — it was the previous home for the eyebrow before the refactor.
+**The page has no header/nav-bar** (client decision). The brand logo (`.hero__logo`, `logo.png`) sits centered at the top of the hero, spanning the full grid width. Below it, `.hero__main` is a 2-column CSS grid (1.2fr / 1fr) on desktop, single column on mobile. The eyebrow (`.hero__eyebrow`) lives inside `.hero__copy` (left column) so the photo column aligns vertically with it. On mobile (< 768px) `.hero__copy` and `.hero__sub` become `display: contents` and `order` puts the photo between the lead and the CTAs (lead → foto → botões); tablet/desktop keep the original order.
 
 Hero stagger animation: elements with `data-hero="N"` attributes are revealed sequentially via `setTimeout` calls spaced 80ms apart.
 
@@ -48,7 +48,20 @@ Hero stagger animation: elements with `data-hero="N"` attributes are revealed se
 - **CTAs**: all point to WhatsApp (primary conversion goal)
 - **Focus**: Reabilitação Oral only — no implant references anywhere on the page
 - **Location**: Juiz de Fora, MG (not Recife, PE)
-- **CRO**: keep `CRO-PE 00.000` as placeholder (legal requirement) in both hero and footer
+- **CRO**: keep `CRO-PE 00.000` as placeholder (legal requirement) in the footer (removed from the hero at the client's request)
+
+## Mobile-first / conversão
+
+- **WhatsApp**: every CTA is a `https://wa.me/5500000000000?text=...` link with a pre-filled message (service CTAs mention the service). The number is a placeholder: replace `5500000000000` everywhere in `index.html` (plus `telephone` in the JSON-LD and the visible `(00) 00000-0000`).
+- **No header/nav-bar**: navigation only via the footer links (`.footer__links`). Don't reintroduce a header.
+- **Floating CTA** (`.floating-cta`): full-width bar at the bottom on mobile, pill in the bottom-right corner on desktop (≥ 768px). Shown via IntersectionObserver only when none of `.hero__actions`, `#agendar`, `#contato`, `.footer` is on screen.
+- Hover styles are wrapped in `@media (hover: hover)` so they don't stick after a tap. Tap targets ≥ 44px.
+- `.reveal` hides content only under `html.js` (set by an inline script in `<head>`), so the page still renders without JS.
+- Semantics: the small numbered labels (`.section-title`) are `<p>`; the real section headings (`.heading-lg`) are `<h2>`.
+
+## SEO
+
+`<head>` has canonical + Open Graph (domain `italoscio.com.br` is provisional), favicon (`logo.png`, 512px), and `Dentist` JSON-LD. TODO when real data arrives: street address/postal code in JSON-LD and Contato, Google Maps link on `.map-frame`, phone number.
 
 ## Page sections
 
@@ -60,7 +73,7 @@ The `id="ano"` in the footer is updated dynamically by the inline `<script>` at 
 
 Editorial gallery of real cases. **These are not patient testimonials** — Ítalo himself writes a short text about each case (foto do paciente + esclarecimento dele), so copy is first-person from Ítalo, never a patient quote.
 
-- Structure: `.cases` → `.cases__viewport` → `.cases__track` (flex, `translateX` via inline JS) → one `<article class="case" data-case>` per case. Controls (`.cases__controls`) sit below: prev arrow · dots · next arrow.
+- Structure: `.cases` → `.cases__viewport` (`overflow-x: auto` + CSS scroll-snap → native swipe on touch) → `.cases__track` (flex) → one `<article class="case" data-case>` per case. Controls (`.cases__controls`) sit below: prev arrow · dots · next arrow. Arrows/dots call `viewport.scrollTo()`; a scroll listener keeps the active dot (`aria-current`) in sync with swipes.
 - **Navigation is manual only** (arrows + dots) — no auto-play (blocks are tall, so hover-to-pause made it never advance).
 - **Adding a case** = paste a new `<article class="case" data-case>` (photo + text + `.case__meta`) into `.cases__track`, and drop the image in `depoimentos/<nome>.jpeg`. Dots regenerate automatically from the number of `[data-case]` slides.
 - Images live in `depoimentos/` (named by patient, e.g. `depoimentos/lorraine.jpeg`).
@@ -71,7 +84,7 @@ There is a Puppeteer script `screenshots.mjs` for desktop + mobile visual checks
 
 Workflow after any change that affects layout/CSS/markup:
 1. Ensure the server is up: `python3 -m http.server 3000`.
-2. Run `node screenshots.mjs` — outputs to `screenshots/` (gitignored): `desktop-*` and `mobile-*` for header, full page, `#casos`, `#agendar`, `#contato`.
-3. Review both breakpoints. Watch especially for mobile regressions: header CTA compact ("WhatsApp") and not touching edges, `#contato` values not overflowing (rows stack < 768px), and the Casos gallery intact.
+2. Run `node screenshots.mjs` — outputs to `screenshots/` (gitignored): `desktop-*` and `mobile-*` for the first fold (`*-fold`), full page, `#casos`, `#agendar`, `#contato`.
+3. Review both breakpoints. Watch especially for mobile regressions: logo centered in the first fold, floating CTA not covering content, `#contato` values not overflowing (rows stack < 768px), and the Casos gallery intact.
 
 The script forces `.reveal`/`[data-hero]` to `.is-visible` before capturing (otherwise sections shoot at `opacity: 0`). Desktop = 1440×900, mobile = 390×844 @2x.
