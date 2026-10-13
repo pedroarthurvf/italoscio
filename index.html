@@ -2,14 +2,64 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Ítalo Saffe Scio · Reabilitação oral em Juiz de Fora</title>
-  <meta name="description" content="Reabilitação oral e próteses com mínima intervenção. Preservamos o que já é seu antes de substituir. Atendimento em Juiz de Fora, MG." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Dr. Ítalo Saffe Scio · Dentista em Juiz de Fora · Reabilitação oral</title>
+  <meta name="description" content="Dentista em Juiz de Fora, MG, com foco em reabilitação oral e próteses. Preservo o que já é seu antes de substituir. Agende uma conversa pelo WhatsApp." />
+  <meta name="theme-color" content="#FFFFFF" />
+
+  <!-- Marca o documento como "JS ligado" antes do paint: sem JS, os
+       elementos .reveal ficam visíveis (não presos em opacity: 0) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- SEO · domínio provisório: trocar se o site for publicado em outro endereço -->
+  <link rel="canonical" href="https://italoscio.com.br/" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Dr. Ítalo Saffe Scio" />
+  <meta property="og:title" content="Dr. Ítalo Saffe Scio · Dentista em Juiz de Fora" />
+  <meta property="og:description" content="Reabilitação oral e próteses. Preservo o que já é seu antes de substituir." />
+  <meta property="og:url" content="https://italoscio.com.br/" />
+  <meta property="og:image" content="https://italoscio.com.br/logo.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Dados estruturados (Google · negócio local). TODO: preencher
+       streetAddress e postalCode com o endereço real e trocar o telefone. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Dr. Ítalo Saffe Scio",
+    "description": "Dentista em Juiz de Fora, MG, com foco em reabilitação oral e próteses dentárias.",
+    "url": "https://italoscio.com.br/",
+    "image": "https://italoscio.com.br/logo.png",
+    "logo": "https://italoscio.com.br/logo.png",
+    "telephone": "+55 00 00000-0000",
+    "email": "contato@italoscio.com.br",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Juiz de Fora",
+      "addressRegion": "MG",
+      "addressCountry": "BR"
+    },
+    "areaServed": { "@type": "City", "name": "Juiz de Fora" },
+    "knowsAbout": ["Reabilitação oral", "Próteses dentárias", "Diagnóstico e planejamento odontológico"],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }]
+  }
+  </script>
 
   <!-- Tipografia: Plus Jakarta Sans (UI/títulos) + Instrument Sans (corpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Instrument+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     /* =====================================================================
@@ -21,7 +71,8 @@
       --color-bg: #FFFFFF;
       --color-surface: #F4F4F2;
       --color-text: #1C1C1C;
-      --color-text-muted: #888884;
+      /* #6F6F6A: contraste AA (≥4.5:1) no branco e no surface */
+      --color-text-muted: #6F6F6A;
       --color-accent: #C9A882;
       --color-accent-dark: #A67C52;
       --color-border: #1C1C1C;
@@ -32,12 +83,15 @@
 
       --max-width: 1240px;
       --gutter: clamp(1.25rem, 4vw, 3rem);
-      --section-pad: clamp(5rem, 10vw, 7.5rem);
+      --section-pad: clamp(4.5rem, 10vw, 7.5rem);
     }
 
     /* Reset enxuto */
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
     body, h1, h2, h3, h4, p, ul, ol, li, figure, blockquote { margin: 0; padding: 0; }
     ul, ol { list-style: none; }
     img, svg { display: block; max-width: 100%; }
@@ -54,9 +108,16 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      overflow-x: clip;
     }
 
     ::selection { background: var(--color-accent); color: var(--color-bg); }
+
+    /* Foco visível só para teclado */
+    :focus-visible {
+      outline: 2px solid var(--color-accent-dark);
+      outline-offset: 3px;
+    }
 
     /* =====================================================================
        UTILITÁRIOS DE LAYOUT — grid 12 colunas no desktop
@@ -142,6 +203,10 @@
       letter-spacing: -0.01em;
       max-width: 22ch;
     }
+    .heading-lg em {
+      font-style: normal;
+      color: var(--color-accent-dark);
+    }
 
     .lead {
       font-family: 'Instrument Sans', sans-serif;
@@ -184,29 +249,42 @@
       transition: background 300ms var(--ease), color 300ms var(--ease),
                   border-color 300ms var(--ease);
       white-space: nowrap;
+      min-height: 48px;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Telas estreitas (iPhone SE/mini): o rótulo pode quebrar linha */
+    @media (max-width: 399px) {
+      .btn { white-space: normal; text-align: center; letter-spacing: 0.14em; }
     }
     .btn--primary {
       background: var(--color-text);
       color: var(--color-bg);
     }
-    .btn--primary:hover {
-      background: var(--color-accent);
-      color: var(--color-text);
-      border-color: var(--color-accent);
+    @media (hover: hover) {
+      .btn--primary:hover {
+        background: var(--color-accent);
+        color: var(--color-text);
+        border-color: var(--color-accent);
+      }
     }
     .btn--ghost {
       background: transparent;
       color: var(--color-text);
     }
-    .btn--ghost:hover {
-      background: var(--color-text);
-      color: var(--color-bg);
+    @media (hover: hover) {
+      .btn--ghost:hover {
+        background: var(--color-text);
+        color: var(--color-bg);
+      }
     }
     .btn .arrow {
       width: 14px; height: 14px;
       transition: transform 300ms var(--ease);
     }
-    .btn:hover .arrow { transform: translateX(3px); }
+    @media (hover: hover) {
+      .btn:hover .arrow { transform: translateX(3px); }
+    }
 
     /* Link "ghost" com underline crescente */
     .link-underline {
@@ -225,80 +303,22 @@
     .link-underline:hover::after { width: 100%; }
 
     /* =====================================================================
-       HEADER FIXO
-       ===================================================================== */
-    .header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: saturate(180%) blur(12px);
-      -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid rgba(28, 28, 28, 0.08);
-    }
-    .header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-block: 0.75rem;
-      gap: 1.5rem;
-    }
-
-    /* Brand: logo PNG da marca no header — formato quadrado */
-    .brand {
-      display: inline-flex;
-      align-items: center;
-    }
-    .brand__logo {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-    @media (min-width: 1024px) {
-      .brand__logo { height: 44px; }
-    }
-
-    .nav {
-      display: none;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    .nav a {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-text);
-    }
-
-    .header .btn { padding: 0.75rem 1.375rem; font-size: 0.6875rem; }
-
-    @media (min-width: 768px) { .nav { display: flex; } }
-
-    /* =====================================================================
-       HERO — sem foto, número gigante como elemento gráfico
-       Título 7/12 à esquerda, credenciais à direita
+       HERO — logo centralizada no topo; abaixo, texto à esquerda
+       e foto à direita (desktop) ou empilhados (mobile)
        ===================================================================== */
     .hero {
-      padding-top: clamp(9.5rem, 16vw, 14rem);
+      padding-top: clamp(2.5rem, 6vw, 4.5rem);
       padding-bottom: clamp(4rem, 8vw, 7rem);
       position: relative;
     }
 
-    /* Moldura decorativa parcial (apenas top + left) */
-    .hero__frame {
-      position: absolute;
-      top: clamp(7rem, 12vw, 10rem);
-      left: var(--gutter);
-      width: clamp(80px, 12vw, 140px);
-      height: clamp(80px, 12vw, 140px);
-      border-top: 1px solid var(--color-border);
-      border-left: 1px solid var(--color-border);
-      pointer-events: none;
-    }
-
-    .hero__top {
-      display: none;
+    /* Logo da marca centralizada no topo da hero (a página não tem header) */
+    .hero__logo {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: clamp(96px, 12vw, 140px);
+      height: auto;
+      margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
     }
 
     /* SVG sorriso — fiel ao "O" da logo: círculo com arco interno inferior */
@@ -308,19 +328,9 @@
       flex-shrink: 0;
     }
 
-    .hero__credentials {
-      text-align: right;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      line-height: 2;
-    }
-    .hero__credentials strong {
-      display: block;
-      color: var(--color-text);
-      font-weight: 400;
+    .hero__eyebrow {
+      display: flex;
+      margin-bottom: clamp(1.25rem, 3vw, 2.5rem);
     }
 
     /* Hero principal: 2 colunas no desktop (texto à esquerda + foto à direita) */
@@ -328,7 +338,7 @@
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 3.5rem;
       align-items: start;
     }
     @media (min-width: 1024px) {
@@ -342,16 +352,32 @@
     .hero__title-wrap { width: 100%; }
 
     .hero__sub {
-      margin-top: clamp(2rem, 4vw, 3rem);
+      margin-top: clamp(1.5rem, 4vw, 3rem);
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .hero__actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
+    }
+    /* Mobile: CTAs ocupam a largura toda (alvo grande, zona do polegar) */
+    @media (max-width: 559px) {
+      .hero__actions .btn { flex: 1 1 100%; }
+    }
+
+    /* Mobile: a foto entra entre o texto e os botões. Os wrappers do texto
+       viram "display: contents" para que lead, foto e CTAs sejam
+       irmãos no grid do .hero__main e possam ser reordenados. */
+    @media (max-width: 767px) {
+      .hero__main { gap: 0; }
+      .hero__copy,
+      .hero__sub { display: contents; }
+      .hero__sub > .lead { margin-top: 1.5rem; }
+      .hero__photo-wrap { order: 1; margin-block: 2rem 2.75rem; }
+      .hero__actions { order: 2; }
     }
 
     /* =====================================================================
@@ -360,7 +386,10 @@
     .hero__photo-wrap {
       position: relative;
       isolation: isolate;
-      width: 100%;
+      width: calc(100% - 12px);
+    }
+    @media (min-width: 1024px) {
+      .hero__photo-wrap { width: 100%; }
     }
 
     .hero__photo {
@@ -421,39 +450,11 @@
     }
 
 
-    /* Bloco com número gigante editorial */
-    .hero__stat {
-      border-top: 1px solid var(--color-border);
-      padding-top: 1.5rem;
-      grid-column: 1 / -1;
-      margin-top: clamp(5rem, 9vw, 7rem);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      align-items: end;
-    }
-    @media (min-width: 768px) {
-      .hero__stat { grid-template-columns: auto 1fr; gap: 3rem; }
-    }
-    .hero__stat-label {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      max-width: 30ch;
-      justify-self: end;
-      text-align: right;
-      padding-bottom: 0.875rem;
-    }
-    @media (max-width: 767px) {
-      .hero__stat-label { justify-self: start; text-align: left; }
-    }
-
     /* =====================================================================
        SOBRE
        ===================================================================== */
     .sobre__grid {
+      display: grid;
       grid-template-columns: 1fr;
       gap: 3rem;
     }
@@ -516,7 +517,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      min-height: 320px;
+      min-height: clamp(260px, 40vw, 320px);
       justify-content: space-between;
     }
     .sobre__editorial .smile { width: 56px; height: 56px; }
@@ -534,8 +535,9 @@
        SERVIÇOS — lista vertical editorial com linha separadora
        ===================================================================== */
     .servicos__head {
+      display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.25rem;
       align-items: end;
       margin-bottom: clamp(3rem, 6vw, 5rem);
     }
@@ -550,8 +552,8 @@
     }
     .servicos-list__item {
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: clamp(1rem, 3vw, 2.5rem);
+      grid-template-columns: auto 1fr;
+      gap: 0 clamp(1rem, 3vw, 2.5rem);
       align-items: start;
       padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
       border-bottom: 1px solid rgba(28, 28, 28, 0.18);
@@ -560,6 +562,9 @@
     }
     .servicos-list__item:hover {
       border-bottom-color: var(--color-accent);
+    }
+    @media (min-width: 768px) {
+      .servicos-list__item { grid-template-columns: auto 1fr auto; }
     }
 
     .servicos-list__num {
@@ -603,83 +608,163 @@
       max-width: 60ch;
     }
 
+    /* Mobile: link abaixo da descrição; desktop: coluna à direita */
     .servicos-list__cta {
-      display: none;
+      grid-column: 2;
+      justify-self: start;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      min-height: 44px;
+      margin-top: 0.5rem;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.6875rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--color-text);
-      padding-top: 0.75rem;
       white-space: nowrap;
     }
-    @media (min-width: 768px) { .servicos-list__cta { display: inline-flex; } }
+    @media (min-width: 768px) {
+      .servicos-list__cta { grid-column: 3; margin-top: 0; min-height: 0; padding-top: 0.75rem; }
+    }
     .servicos-list__cta .arrow {
       width: 14px; height: 14px;
       transition: transform 300ms var(--ease);
     }
-    .servicos-list__item:hover .servicos-list__cta .arrow { transform: translateX(4px); }
+    .servicos-list__item:hover .servicos-list__cta .arrow,
+    .servicos-list__cta:focus-visible .arrow { transform: translateX(4px); }
 
     /* =====================================================================
-       DEPOIMENTOS — grid editorial estático
+       CASOS — galeria navegável (foto + texto do Ítalo lado a lado)
        ===================================================================== */
-    .depoimentos__grid {
+    /* Scroll-snap nativo: swipe no celular, setas/dots rolam o viewport */
+    .cases__viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .cases__viewport::-webkit-scrollbar { display: none; }
+    .cases__track {
+      display: flex;
+    }
+    .case {
+      flex: 0 0 100%;
+      min-width: 0;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
-      border-top: 1px solid var(--color-border);
+      gap: clamp(1.75rem, 4vw, 3rem);
+      align-items: stretch;
     }
     @media (min-width: 1024px) {
-      .depoimentos__grid {
-        grid-template-columns: repeat(3, 1fr);
-        border-bottom: 1px solid var(--color-border);
-      }
+      .case { grid-template-columns: 0.9fr 1.1fr; }
     }
-    .testimonial {
-      padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 2.5vw, 2rem);
-      border-bottom: 1px solid rgba(28, 28, 28, 0.18);
+    .case__photo {
+      margin: 0;
+      background: var(--color-surface);
+    }
+    .case__photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: 50% 30%;
+      border-radius: 0;
+    }
+    @media (min-width: 768px) {
+      .case__photo img { aspect-ratio: 4 / 5; object-position: 50% 50%; }
+    }
+    .case__body {
       display: flex;
       flex-direction: column;
-      gap: 1.75rem;
-      position: relative;
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 1.75rem 0 2.25rem;
     }
     @media (min-width: 1024px) {
-      .testimonial { border-bottom: 0; border-right: 1px solid rgba(28, 28, 28, 0.18); }
-      .testimonial:last-child { border-right: 0; }
+      .case__body { padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 2.5rem); }
     }
-    .testimonial__quote {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 300;
-      font-size: 4.5rem;
-      line-height: 0.7;
-      color: var(--color-accent);
-      display: inline-block;
-    }
-    .testimonial__text {
+    .case__text {
       font-family: 'Instrument Sans', sans-serif;
       font-weight: 300;
       font-size: 1.0625rem;
       line-height: 1.65;
       color: var(--color-text);
     }
-    .testimonial__author {
+    .case__text p { margin: 0 0 1rem; }
+    .case__text p:last-child { margin-bottom: 0; }
+    .case__meta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       padding-top: 1.25rem;
       border-top: 1px solid rgba(28, 28, 28, 0.12);
-      margin-top: auto;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--color-text-muted);
     }
-    .testimonial__author strong {
+    .case__meta strong {
       color: var(--color-text);
       font-weight: 400;
+    }
+    .cases__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: clamp(1.25rem, 3vw, 2.25rem);
+    }
+    .cases__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 44px; height: 44px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: background 300ms var(--ease), color 300ms var(--ease), border-color 300ms var(--ease);
+    }
+    @media (hover: hover) {
+      .cases__arrow:hover {
+        background: var(--color-text);
+        border-color: var(--color-text);
+        color: var(--color-bg);
+      }
+    }
+    .cases__arrow svg { width: 20px; height: 20px; }
+    .cases__dots {
+      display: flex;
+      justify-content: center;
+    }
+    /* Botão de 32px (alvo de toque) com o quadradinho de 8px desenhado no ::before */
+    .cases__dot {
+      width: 32px; height: 44px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cases__dot::before {
+      content: "";
+      width: 8px; height: 8px;
+      border: 1px solid var(--color-text-muted);
+      transition: background 300ms var(--ease), border-color 300ms var(--ease);
+    }
+    .cases__dot[aria-current="true"]::before {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
     }
 
     /* =====================================================================
@@ -690,15 +775,19 @@
       padding: clamp(2.5rem, 6vw, 5rem);
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: end;
       position: relative;
     }
     @media (min-width: 1024px) {
       .cta-band__box { grid-template-columns: 1fr auto; gap: 4rem; }
     }
+    @media (max-width: 559px) {
+      .cta-band__box { padding: 2rem 1.5rem; }
+      .cta-band .btn { width: 100%; }
+    }
     .cta-band .smile {
-      width: 56px; height: 56px;
+      width: 48px; height: 48px;
       margin-bottom: 1.5rem;
     }
     .cta-band h2 {
@@ -721,10 +810,12 @@
       color: var(--color-text);
       border-color: var(--color-accent);
     }
-    .cta-band .btn--primary:hover {
-      background: var(--color-text);
-      color: var(--color-bg);
-      border-color: var(--color-text);
+    @media (hover: hover) {
+      .cta-band .btn--primary:hover {
+        background: var(--color-text);
+        color: var(--color-bg);
+        border-color: var(--color-text);
+      }
     }
 
     /* =====================================================================
@@ -752,13 +843,16 @@
     }
     .contato__item {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 1rem;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
       align-items: start;
       padding-block: 1.5rem;
       border-bottom: 1px solid rgba(28, 28, 28, 0.12);
     }
-    .contato__item h4 {
+    @media (min-width: 768px) {
+      .contato__item { grid-template-columns: 1fr 1.5fr; gap: 1rem; }
+    }
+    .contato__item h3 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 400;
       font-size: 0.6875rem;
@@ -772,10 +866,12 @@
       font-size: 1rem;
       line-height: 1.55;
       color: var(--color-text);
+      overflow-wrap: anywhere;
     }
 
     .map-frame {
       aspect-ratio: 4 / 3;
+      width: 100%;
       border: 1px solid var(--color-border);
       display: flex;
       align-items: center;
@@ -818,6 +914,12 @@
       inset: 4px;
       background: var(--color-accent);
     }
+    .map-frame__cta {
+      color: var(--color-text);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+    }
+    .map-frame:hover .map-frame__cta { color: var(--color-accent-dark); }
 
     /* =====================================================================
        FOOTER
@@ -851,14 +953,18 @@
     }
     .footer__links {
       display: flex;
-      gap: 1.75rem;
+      flex-wrap: wrap;
+      gap: 0 1.75rem;
       justify-content: center;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
-    .footer__links a { color: var(--color-text-muted); }
+    .footer__links a {
+      color: var(--color-text-muted);
+      padding-block: 0.75rem;
+    }
     .footer__copy {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.6875rem;
@@ -872,15 +978,57 @@
     }
 
     /* =====================================================================
+       CTA FLUTUANTE — WhatsApp sempre à mão (a página não tem header).
+       Mobile: barra fixa embaixo, ao alcance do polegar.
+       Desktop: pílula no canto inferior direito.
+       Aparece depois do hero e some quando outro CTA já está na tela.
+       ===================================================================== */
+    .floating-cta {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 40;
+      padding: 0.75rem var(--gutter) calc(0.75rem + env(safe-area-inset-bottom));
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-top: 1px solid rgba(28, 28, 28, 0.08);
+      transform: translateY(100%);
+      visibility: hidden;
+      transition: transform 300ms var(--ease), visibility 0s linear 300ms;
+    }
+    .floating-cta.is-visible {
+      transform: none;
+      visibility: visible;
+      transition: transform 300ms var(--ease), visibility 0s;
+    }
+    .floating-cta .btn { width: 100%; }
+    @media (min-width: 768px) {
+      .floating-cta {
+        left: auto;
+        right: var(--gutter);
+        bottom: 1.5rem;
+        padding: 0;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: 0;
+        transform: translateY(calc(100% + 1.5rem));
+      }
+      .floating-cta .btn {
+        width: auto;
+        box-shadow: 0 16px 32px -12px rgba(28, 28, 28, 0.35);
+      }
+    }
+
+    /* =====================================================================
        MOTION — reveal on scroll + page load do hero
        ===================================================================== */
-    .reveal {
+    .js .reveal {
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 600ms var(--ease), transform 600ms var(--ease);
-      will-change: opacity, transform;
     }
-    .reveal.is-visible {
+    .js .reveal.is-visible {
       opacity: 1;
       transform: none;
     }
@@ -890,57 +1038,31 @@
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
-      .reveal { opacity: 1; transform: none; }
+      .js .reveal { opacity: 1; transform: none; }
       html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ============================================================
-       HEADER FIXO — marca com moldura quadrada (referência à logo)
-       ============================================================ -->
-  <header class="header">
-    <div class="container header__inner">
-      <a href="#topo" class="brand" aria-label="Dr. Ítalo Saffe Scio · Página inicial">
-        <img src="logo italo (1).png" alt="Ítalo Saffe Scio · Reabilitação oral" class="brand__logo" />
-      </a>
-
-      <nav class="nav" aria-label="Navegação principal">
-        <a href="#sobre" class="link-underline">Sobre</a>
-        <a href="#servicos" class="link-underline">Especialidades</a>
-        <a href="#depoimentos" class="link-underline">Depoimentos</a>
-        <a href="#contato" class="link-underline">Contato</a>
-      </nav>
-
-      <a href="#agendar" class="btn btn--primary">
-        Falar no WhatsApp
-      </a>
-    </div>
-  </header>
-
   <main id="topo">
 
     <!-- ============================================================
-         1. HERO — sem foto, número editorial gigante, moldura parcial
+         1. HERO — logo centralizada + título, CTAs e foto
          ============================================================ -->
     <section class="hero">
-      <span class="hero__frame" aria-hidden="true"></span>
 
       <div class="container">
         <div class="grid-12">
 
+          <img src="logo.png" alt="Ítalo Saffe Scio · Reabilitação oral" class="hero__logo reveal" data-hero="1" width="512" height="512" />
+
           <!-- Bloco principal: texto à esquerda + foto à direita (desktop) -->
           <div class="hero__main">
             <div class="hero__copy">
-              <!-- Sorriso decorativo + eyebrow alinhado ao topo da foto -->
-              <svg class="smile reveal" data-hero="1" viewBox="0 0 56 56" fill="none" aria-hidden="true">
-                <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M16 30 Q28 42 40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              </svg>
-              <span class="eyebrow reveal" data-hero="2" style="margin-top: 1rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); display: flex;">
+              <!-- Eyebrow alinhado ao topo da foto -->
+              <span class="eyebrow hero__eyebrow reveal" data-hero="2">
                 <span class="dot"></span>
-                Reabilitação oral
+                Reabilitação oral · Juiz de Fora
               </span>
 
               <div class="hero__title-wrap">
@@ -955,8 +1077,8 @@
                   A gente preserva o que já é seu antes de qualquer substituição.
                   Quando precisa intervir, faz só o necessário.
                 </p>
-                <div class="hero__actions reveal" data-hero="6">
-                  <a href="#agendar" class="btn btn--primary">
+                <div class="hero__actions reveal" data-hero="7">
+                  <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20marcar%20uma%20conversa." target="_blank" rel="noopener" class="btn btn--primary">
                     Falar agora no WhatsApp
                     <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M2 7h10M8 3l4 4-4 4"/>
@@ -968,7 +1090,7 @@
             </div>
 
             <!-- Placeholder da foto com moldura e efeito 3D flutuante -->
-            <div class="hero__photo-wrap reveal" data-hero="9">
+            <div class="hero__photo-wrap reveal" data-hero="6">
               <div class="hero__photo" role="img" aria-label="Foto do Dr. Ítalo Saffe Scio">
                 Foto Dr. Ítalo Saffe Scio
               </div>
@@ -986,14 +1108,14 @@
          ============================================================ -->
     <section id="sobre">
       <div class="container">
-        <h2 class="section-title reveal">02 · Sobre</h2>
+        <p class="section-title reveal">02 · Sobre</p>
 
         <div class="sobre__grid">
 
           <div class="sobre__copy reveal">
-            <p class="heading-lg" style="margin-bottom: 2rem;">
-              Faço odontologia que <em style="color: var(--color-accent-dark); font-style: normal;">escuta</em> antes de tratar.
-            </p>
+            <h2 class="heading-lg" style="margin-bottom: 2rem;">
+              Faço odontologia que <em>escuta</em> antes de tratar.
+            </h2>
             <p>
               <strong>Sou o Ítalo.</strong> Trabalho com reabilitação oral,
               mas o que me move é fazer o mínimo necessário para você voltar
@@ -1046,13 +1168,13 @@
     <section id="servicos" class="section--surface">
       <div class="container">
 
-        <h2 class="section-title reveal">03 · Especialidades</h2>
+        <p class="section-title reveal">03 · Especialidades</p>
 
         <div class="servicos__head">
           <div class="reveal">
-            <p class="heading-lg">
+            <h2 class="heading-lg">
               Cuidado pensado pra você, da primeira conversa ao resultado.
-            </p>
+            </h2>
           </div>
           <div class="reveal">
             <p class="lead" style="font-size: 1rem;">
@@ -1079,12 +1201,12 @@
                 acontecendo na sua boca. O plano só começa depois de ouvir você.
               </p>
             </div>
-            <span class="servicos-list__cta">
-              Saber mais
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20saber%20mais%20sobre%20diagn%C3%B3stico%20e%20planejamento." target="_blank" rel="noopener" class="servicos-list__cta" aria-label="Perguntar no WhatsApp sobre Diagnóstico e Planejamento">
+              Perguntar sobre isso
               <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 7h10M8 3l4 4-4 4"/>
               </svg>
-            </span>
+            </a>
           </li>
 
           <li class="servicos-list__item reveal">
@@ -1102,12 +1224,12 @@
                 Você volta a comer o que quer e a sorrir sem pensar.
               </p>
             </div>
-            <span class="servicos-list__cta">
-              Saber mais
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20saber%20mais%20sobre%20reabilita%C3%A7%C3%A3o%20oral." target="_blank" rel="noopener" class="servicos-list__cta" aria-label="Perguntar no WhatsApp sobre Reabilitação Oral">
+              Perguntar sobre isso
               <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 7h10M8 3l4 4-4 4"/>
               </svg>
-            </span>
+            </a>
           </li>
 
           <li class="servicos-list__item reveal">
@@ -1125,12 +1247,12 @@
                 Você só lembra dela porque está mastigando tranquilo.
               </p>
             </div>
-            <span class="servicos-list__cta">
-              Saber mais
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20saber%20mais%20sobre%20pr%C3%B3teses%20dent%C3%A1rias." target="_blank" rel="noopener" class="servicos-list__cta" aria-label="Perguntar no WhatsApp sobre Próteses Dentárias">
+              Perguntar sobre isso
               <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 7h10M8 3l4 4-4 4"/>
               </svg>
-            </span>
+            </a>
           </li>
 
           <li class="servicos-list__item reveal">
@@ -1148,12 +1270,12 @@
                 Depois a gente decide juntos o melhor caminho.
               </p>
             </div>
-            <span class="servicos-list__cta">
-              Saber mais
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20saber%20mais%20sobre%20consulta%20e%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" class="servicos-list__cta" aria-label="Perguntar no WhatsApp sobre Consulta e Avaliação">
+              Perguntar sobre isso
               <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 7h10M8 3l4 4-4 4"/>
               </svg>
-            </span>
+            </a>
           </li>
 
         </ul>
@@ -1161,69 +1283,118 @@
     </section>
 
     <!-- ============================================================
-         4. DEPOIMENTOS — grid editorial 3 colunas, sem scroll
+         4. CASOS — galeria navegável por setas (foto + texto do Ítalo)
+         Adicionar um caso = colar um novo <article class="case" data-case>
          ============================================================ -->
-    <section id="depoimentos">
+    <section id="casos">
       <div class="container">
 
-        <h2 class="section-title reveal">04 · Depoimentos</h2>
+        <p class="section-title reveal">04 · Casos</p>
 
         <div class="reveal" style="margin-bottom: 3rem;">
-          <p class="heading-lg">Quem já confiou o sorriso ao Ítalo.</p>
+          <h2 class="heading-lg">Alguns casos que passaram por aqui.</h2>
         </div>
 
-        <div class="depoimentos__grid">
+        <div class="reveal">
+          <div class="cases" data-cases>
+            <div class="cases__viewport" data-cases-viewport tabindex="0" aria-label="Casos · deslize para o lado para ver mais">
+              <div class="cases__track" data-cases-track>
 
-          <article class="testimonial reveal">
-            <span class="testimonial__quote" aria-hidden="true">“</span>
-            <p class="testimonial__text">
-              Cheguei achando que ia ter que arrancar tudo, porque foi isso que
-              outro dentista falou. O Ítalo olhou o exame com calma e disse
-              que dava pra preservar dois dentes. Hoje mastigo normal de novo.
-            </p>
-            <div class="testimonial__author">
-              <strong>Marina Cavalcanti</strong>
-              <span>·</span>
-              <span>Juiz de Fora · MG</span>
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/lorraine.jpeg" width="960" height="1280" decoding="async" alt="Lorraine, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>A Lorraine conviveu com facetas em resina por 5 anos.</p>
+                    <p>No começo, elas faziam sentido. Mas com o tempo, deixaram de ser confortáveis e já não traziam a naturalidade que ela procurava. Sorrir já não era tão espontâneo.</p>
+                    <p>Foi aí que ela decidiu mudar. Fizemos um trabalho restaurador completo, buscando mais conforto, naturalidade e equilíbrio.</p>
+                    <p>E ver a Lorraine sorrindo com mais leveza foi a melhor parte de tudo 🤝</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Lorraine</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/valeska.jpeg" width="960" height="1280" decoding="async" alt="Valeska, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>Pra muita gente, ir ao dentista não é simples.</p>
+                    <p>A Valeska morre de medo de dentista, mas aos poucos fomos criando confiança. Ela é minha vizinha, me vê praticamente todo dia e me escolheu pra cuidar do sorriso dela.</p>
+                    <p>Fico feliz demais quando alguém que convive comigo no dia a dia confia no meu trabalho dessa forma.</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Valeska</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/beatriz.jpeg" width="960" height="1280" decoding="async" alt="Beatriz, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>A Beatriz veio hoje pra consulta de manutenção. Ela veio por indicação do namorado, que atendi semana passada.</p>
+                    <p>Já tem o hábito de cuidar. Não espera incomodar nem deixa virar problema.</p>
+                    <p>Vai mantendo, ajustando, acompanhando. No fim, é isso que faz diferença.</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Beatriz</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="case" data-case>
+                <figure class="case__photo">
+                  <img src="depoimentos/felipe.jpeg" width="960" height="1280" decoding="async" alt="Felipe, paciente do Dr. Ítalo, sorrindo" loading="lazy" />
+                </figure>
+                <div class="case__body">
+                  <div class="case__text">
+                    <p>Quando era criança, o Felipe levou uma pancada em um dente. Na época, não deu nada. Seguiu a vida normal.</p>
+                    <p>E por anos, não deu problema. Até que um dia, o dente quebrou. Sem aviso.</p>
+                    <p>Foi aí que ele decidiu começar a tratar. A gente ainda não finalizou tudo, mas o processo já começou.</p>
+                    <p>E, muitas vezes, o mais difícil é dar o primeiro passo.</p>
+                  </div>
+                  <div class="case__meta">
+                    <strong>Felipe</strong>
+                    <span>·</span>
+                    <span>Reabilitação Oral</span>
+                  </div>
+                </div>
+              </article>
+
+              </div>
             </div>
-          </article>
-
-          <article class="testimonial reveal">
-            <span class="testimonial__quote" aria-hidden="true">“</span>
-            <p class="testimonial__text">
-              Fiz a reabilitação em duas etapas e em todas as consultas
-              ele explicou direitinho o que ia acontecer. Sem conversa de vendedor,
-              sem empurrar coisa que eu não precisava.
-            </p>
-            <div class="testimonial__author">
-              <strong>Roberto Lima</strong>
-              <span>·</span>
-              <span>Juiz de Fora · MG</span>
+            <div class="cases__controls">
+              <button type="button" class="cases__arrow cases__arrow--prev" data-cases-prev aria-label="Caso anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <div class="cases__dots" data-cases-dots role="group" aria-label="Escolher caso"></div>
+              <button type="button" class="cases__arrow cases__arrow--next" data-cases-next aria-label="Próximo caso">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
             </div>
-          </article>
-
-          <article class="testimonial reveal">
-            <span class="testimonial__quote" aria-hidden="true">“</span>
-            <p class="testimonial__text">
-              Atendimento tranquilo, ambiente limpo e ele responde no WhatsApp
-              mesmo fora do horário quando bate uma dúvida.
-              Coisa rara hoje em dia.
-            </p>
-            <div class="testimonial__author">
-              <strong>Camila Andrade</strong>
-              <span>·</span>
-              <span>Juiz de Fora · MG</span>
-            </div>
-          </article>
-
+          </div>
         </div>
+
       </div>
     </section>
 
     <!-- ============================================================
          5. CTA AGENDAMENTO — moldura, sem fundo accent
          ============================================================ -->
-    <section id="agendar" class="section--surface">
+    <section id="agendar" class="cta-band section--surface">
       <div class="container">
         <div class="cta-band__box reveal">
           <div>
@@ -1237,7 +1408,7 @@
               sem promessa exagerada, sem empurrar tratamento.
             </p>
           </div>
-          <a href="#contato" class="btn btn--primary">
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20marcar%20uma%20conversa." target="_blank" rel="noopener" class="btn btn--primary">
             Chamar no WhatsApp
             <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M2 7h10M8 3l4 4-4 4"/>
@@ -1253,47 +1424,59 @@
     <section id="contato">
       <div class="container">
 
-        <h2 class="section-title reveal">06 · Contato</h2>
+        <p class="section-title reveal">06 · Contato</p>
 
         <div class="contato__grid">
 
           <div class="contato__info">
-            <p class="heading-lg reveal" style="margin-bottom: 2.5rem;">
+            <h2 class="heading-lg reveal" style="margin-bottom: 2.5rem;">
               Onde fica e como falar.
-            </p>
+            </h2>
             <ul class="contato__list">
               <li class="contato__item reveal">
-                <h4>Endereço</h4>
-                <p>[Rua, número · Bairro]<br />Cidade · UF</p>
+                <h3>Endereço</h3>
+                <p>[Rua, número · Bairro]<br />Juiz de Fora · MG</p>
               </li>
               <li class="contato__item reveal">
-                <h4>WhatsApp</h4>
-                <p><a href="https://wa.me/5500000000000" class="link-underline">(00) 00000-0000</a></p>
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20marcar%20uma%20conversa." target="_blank" rel="noopener" class="link-underline">(00) 00000-0000</a></p>
               </li>
               <li class="contato__item reveal">
-                <h4>E-mail</h4>
+                <h3>E-mail</h3>
                 <p><a href="mailto:contato@italoscio.com.br" class="link-underline">contato@italoscio.com.br</a></p>
               </li>
               <li class="contato__item reveal">
-                <h4>Horários</h4>
+                <h3>Horários</h3>
                 <p>Seg a sex · 09h às 18h<br />Sábado · com agendamento</p>
               </li>
             </ul>
           </div>
 
           <div class="contato__map-wrap reveal">
-            <div class="map-frame" role="img" aria-label="Mapa da localização da clínica">
-              <div class="map-frame__pin">
+            <!-- TODO: trocar a busca pelo endereço real (ou link do perfil no Google Maps) -->
+            <a class="map-frame" href="https://www.google.com/maps/search/?api=1&amp;query=Juiz+de+Fora+MG" target="_blank" rel="noopener" aria-label="Abrir a localização da clínica no Google Maps">
+              <span class="map-frame__pin">
                 <span class="marker" aria-hidden="true"></span>
                 <span>Clínica · Juiz de Fora</span>
-              </div>
-            </div>
+                <span class="map-frame__cta">Abrir no Google Maps</span>
+              </span>
+            </a>
           </div>
 
         </div>
       </div>
     </section>
   </main>
+
+  <!-- CTA flutuante: barra no mobile, pílula no desktop (controlado pelo script no fim da página) -->
+  <div class="floating-cta" data-floating-cta>
+    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Dr.%20%C3%8Dtalo%21%20Vim%20pelo%20site%20e%20queria%20marcar%20uma%20conversa." target="_blank" rel="noopener" class="btn btn--primary">
+      Falar no WhatsApp
+      <svg class="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M2 7h10M8 3l4 4-4 4"/>
+      </svg>
+    </a>
+  </div>
 
   <!-- ============================================================
        FOOTER
@@ -1307,7 +1490,7 @@
       <nav class="footer__links" aria-label="Rodapé">
         <a href="#sobre" class="link-underline">Sobre</a>
         <a href="#servicos" class="link-underline">Especialidades</a>
-        <a href="#depoimentos" class="link-underline">Depoimentos</a>
+        <a href="#casos" class="link-underline">Casos</a>
         <a href="#contato" class="link-underline">Contato</a>
       </nav>
       <p class="footer__copy">
@@ -1360,6 +1543,115 @@
           setTimeout(() => el.classList.add('is-visible'), 80 * i);
         });
       });
+    })();
+
+    // =====================================================================
+    // Casos — scroll-snap nativo (swipe no celular) + setas e dots
+    // Cada <article data-case> é um slide. Com 1 só caso, controles ocultos.
+    // =====================================================================
+    (function () {
+      const root = document.querySelector('[data-cases]');
+      if (!root) return;
+
+      const viewport = root.querySelector('[data-cases-viewport]');
+      const dotsWrap = root.querySelector('[data-cases-dots]');
+      const prevBtn = root.querySelector('[data-cases-prev]');
+      const nextBtn = root.querySelector('[data-cases-next]');
+      const slides = Array.from(root.querySelectorAll('[data-case]'));
+      const n = slides.length;
+
+      // Com um único caso não há o que navegar
+      if (n <= 1) {
+        const controls = root.querySelector('.cases__controls');
+        if (controls) controls.style.display = 'none';
+        return;
+      }
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+
+      slides.forEach((slide, i) => {
+        slide.setAttribute('aria-label', 'Caso ' + (i + 1) + ' de ' + n);
+      });
+
+      // Cria os dots
+      const dots = slides.map((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'cases__dot';
+        dot.setAttribute('aria-label', 'Caso ' + (i + 1));
+        dot.addEventListener('click', () => go(i));
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      function setActive(i) {
+        index = i;
+        dots.forEach((d, di) => d.setAttribute('aria-current', String(di === index)));
+      }
+
+      function go(i) {
+        const target = (i + n) % n;
+        viewport.scrollTo({
+          left: target * viewport.clientWidth,
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+        setActive(target);
+
+        // No mobile o slide é alto: se o topo da foto já saiu da tela,
+        // sobe até ele para o novo caso começar pela foto
+        const offset = 16;
+        const top = viewport.getBoundingClientRect().top;
+        if (top < 0) {
+          window.scrollBy({ top: top - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      // Atualiza os dots conforme o usuário arrasta
+      let ticking = false;
+      viewport.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const i = Math.round(viewport.scrollLeft / viewport.clientWidth);
+          if (i !== index) setActive(Math.max(0, Math.min(n - 1, i)));
+          ticking = false;
+        });
+      }, { passive: true });
+
+      // Setas do teclado quando o carrossel está em foco
+      viewport.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+      });
+
+      prevBtn.addEventListener('click', () => go(index - 1));
+      nextBtn.addEventListener('click', () => go(index + 1));
+      setActive(0);
+    })();
+
+    // =====================================================================
+    // CTA flutuante (barra no mobile, pílula no desktop) — visível só quando nenhum outro CTA de WhatsApp
+    // (hero, faixa de agendamento, contato, rodapé) está na tela
+    // =====================================================================
+    (function () {
+      const bar = document.querySelector('[data-floating-cta]');
+      if (!bar || !('IntersectionObserver' in window)) return;
+
+      const zones = ['.hero__actions', '#agendar', '#contato', '.footer']
+        .map(sel => document.querySelector(sel))
+        .filter(Boolean);
+      const visible = new Set();
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+        bar.classList.toggle('is-visible', visible.size === 0);
+      });
+
+      zones.forEach(el => io.observe(el));
     })();
   </script>
 </body>

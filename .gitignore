@@ -1,0 +1,5 @@
+# Saída do script de verificação visual (screenshots.mjs)
+screenshots/
+
+# macOS
+.DS_Store
